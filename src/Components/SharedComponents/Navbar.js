@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../Styles/Navbar.css';
 import logo from '../../resources/logo.png';
+import { Link } from "react-router-dom";
 
 
 
@@ -8,8 +9,8 @@ const Navbar = () => {
 
     const menu = <>
         <li className=' text-accent'> Cart <sup className='p-1'>0</sup></li>
-        <li className='px-5'>Login</li>
-        <li><button class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2">Sign up</button></li>
+        <Link className='px-5 ' to="/login">Login</Link>
+        <li><button class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2"><Link to="/signup">Signup</Link></button></li>
 
 
     </>
@@ -25,7 +26,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 
-                <a class="btn btn-ghost normal-case text-xl"><img className='w-36' src={logo} alt="" srcset="" /></a>
+                <Link to={'/'} class="btn btn-ghost normal-case text-xl"><img className='w-36' src={logo} alt="" srcset="" /></Link>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal pl-4">
