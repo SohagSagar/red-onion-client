@@ -30,6 +30,10 @@ const Signup = () => {
                                     minLength: {
                                         value: 5,
                                         message: "Minimum length should be 5"
+                                    },
+                                    pattern:{
+                                        value:/^[a-zA-Z ]{2,30}$/,
+                                        message:'Name should be a string.'
                                     }
                                 })} type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
 
@@ -42,6 +46,9 @@ const Signup = () => {
                                         }
                                         {
                                             errors.name?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.name.message}</span>
+                                        }
+                                        {
+                                            errors.name?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.name.message}</span>
                                         }
                                     </>
                                 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import logo from '../../resources/logo.png';
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -75,6 +76,7 @@ const Login = () => {
                                 }
 
                                 <button type='submit' class="btn btn-primary w-full mt-4 normal-case">Login</button>
+                                <p className='text-primary mt-2 text-center'>New to Red Onion? <Link className="font-semibold" to={'/signup'}>Register Now</Link> </p>
                             </form>
 
                             <div class="divider">Or</div>
