@@ -6,10 +6,11 @@ const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     const password = watch('password');
+
     return (
         <div className='min-h-screen'>
 
-            <div class="card w-96 bg-base-100 shadow-xl mx-auto my-12">
+            <div class="card w-96 bg-base-100 signup-card mx-auto my-12">
                 <div class="card-body">
                     <div class="card-actions justify-center">
                         <img className='w-44' src={logo} alt="" srcset="" />
@@ -91,7 +92,7 @@ const Signup = () => {
                                     }
                                 })} type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
                                 {
-                                    errors?.name &&
+                                    errors?.password &&
                                     <>
                                         {
                                             errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>
@@ -118,7 +119,7 @@ const Signup = () => {
                                     
                                 })} type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
                                 {
-                                    errors?.name &&
+                                    errors?.confirmPassword &&
                                     <>
                                         {
                                             errors.confirmPassword?.type === 'required' && <span class="label-text-alt text-red-500">{errors.confirmPassword.message}</span>
@@ -130,7 +131,7 @@ const Signup = () => {
                                     </>
                                 }
 
-                                <button type='submit' class="btn btn-primary w-full mt-4">Button</button>
+                                <button type='submit' class="btn btn-primary w-full mt-4 normal-case">Sign Up</button>
                             </form>
                         </div>
                     </div>
