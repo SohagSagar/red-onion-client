@@ -1,0 +1,11 @@
+.homeBanner {
+    background-image: url('../resources/bannerbackground.png');
+    background-size: cover;
+}
+
+.input-group input {
+    border-bottom-right-radius: 20px;
+}
+/* .test-input{
+    border-radius: 25px;
+} */
