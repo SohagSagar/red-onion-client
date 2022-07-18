@@ -1,11 +1,61 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import logo from '../../resources/logo.png';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase/Firebase';
+import toast from 'react-hot-toast';
+import Loading from '../SharedComponents/Loading';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { async } from '@firebase/util';
+import { wait } from '@testing-library/user-event/dist/utils';
 
 const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
     const password = watch('password');
+    const navigate = useNavigate();
+
+    // getting user information from form//
+    const onSubmit =async data => {
+        if (data) {
+          await  createUserWithEmailAndPassword(data.email, data.password);
+          await updateProfile({ displayName:data.name })
+        }
+    }
+
+
+    if (error || updateProfileError) {
+        console.log(error.message);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+            toast.error('This email is already registered')
+        }
+        else {
+            toast.error(error.message)
+        }
+    }
+
+    useEffect(() => {
+        if (user) {
+            toast.success('User Created successfully.Login Now');
+            signOut(auth);
+            navigate('/login');
+        }
+
+    }, [user,navigate])
+
+
+
+    if (loading || updating) {
+        return <Loading />;
+    }
+
 
     return (
         <div className='min-h-screen'>
@@ -31,9 +81,9 @@ const Signup = () => {
                                         value: 5,
                                         message: "Minimum length should be 5"
                                     },
-                                    pattern:{
-                                        value:/^[a-zA-Z ]{2,30}$/,
-                                        message:'Name should be a string.'
+                                    pattern: {
+                                        value: /^[a-zA-Z ]{2,30}$/,
+                                        message: 'Name should be a string.'
                                     }
                                 })} type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
 
@@ -116,14 +166,14 @@ const Signup = () => {
                                     <span class="label-text">Confirm Password</span>
 
                                 </label>
-                                <input {...register('confirmPassword',{
-                                    required:{
-                                        value:true,
-                                        message:'Field is required'
+                                <input {...register('confirmPassword', {
+                                    required: {
+                                        value: true,
+                                        message: 'Field is required'
                                     },
-                                    validate:(value)=>
-                                        value===password || 'Password do not match.'
-                                    
+                                    validate: (value) =>
+                                        value === password || 'Password do not match.'
+
                                 })} type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
                                 {
                                     errors?.confirmPassword &&

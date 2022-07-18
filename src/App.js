@@ -6,6 +6,9 @@ import Navbar from "./Components/SharedComponents/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Login/Signup";
+import { Toaster } from 'react-hot-toast';
+import Dashboard from "./Components/Dashboard/Dashboard";
+import FoodDetails from "./Components/FoodDetails";
 
 
 
@@ -18,16 +21,19 @@ function App() {
         <Route path={"/"} element={
           <>
             <Home />
+            <FoodDetails/>
             <FoodSection />
             <WhyChooseUs />
           </>
-        }></Route>
-
+        }/>
+        
+        {/* <Route path="/dashboard" element={<Dashboard/>}></Route> */}
         <Route path="login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
       </Routes>
 
       <Footer />
+      <Toaster />
     </div>
   );
 }

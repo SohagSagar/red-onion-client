@@ -1,10 +1,7 @@
-.homeBanner {
+.login-page{
     background-image: url('../resources/bannerbackground.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    background-size:auto 100%;
+
 }
 
-
-/* .test-input{
-    border-radius: 25px;
-} */

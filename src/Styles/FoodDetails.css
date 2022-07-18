@@ -1,0 +1,33 @@
+.food-details-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+}
+.left-container{
+    /* flex: 1; */
+    width: 45%;
+}
+.left-container>h2{
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.left-container p{
+    font-size: 1rem;
+    color: rgb(70, 67, 67);
+    text-align: justify;
+}
+.quantity-btn{
+    background: transparent;
+    color:gray;       
+}
+.quantity-btn:hover{
+    background: transparent;
+}
+.right-container{
+    width: 45%;
+}
+.right-container>img{
+    width: 30rem;
+}

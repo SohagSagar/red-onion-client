@@ -9,9 +9,9 @@ const Home = () => {
             <div class="hero min-h-screen homeBanner">
                 <div class="hero-content text-center">
                     <div class="max-w-md mt-[-100px]">
-                        <h1 class="text-3xl font-semibold whitespace-nowrap ">Best Food Waiting For Your Belly</h1>
+                        <h1 class="text-3xl font-semibold whitespace-nowrap mb-10">Best Food Waiting For Your Belly</h1>
 
-                        <input className='rounded-lg h-10 w-96 pl-3 mt- input-primary' type="text" placeholder="Search Food Items" class="input w-full max-w-xs" />
+                        <input className='rounded-lg h-10 w-96 pl-3 input-primary ' type="text" placeholder="Search Food Items" class="input w-full max-w-xs" />
 
                        
 
