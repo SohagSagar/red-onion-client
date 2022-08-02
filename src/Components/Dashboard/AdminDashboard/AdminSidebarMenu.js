@@ -17,25 +17,45 @@ const routes = [
         icon: <AiOutlineDashboard />,
     },
     {
-        path: "/dashboard/my-orders",
-        name: "My Orders",
+        path: "/dashboard/all-orders",
+        name: "All Orders",
         icon: <BsBook />,
     },
     {
-        path: "/dashboard/add-review",
-        name: "Add Review",
+        path: "/dashboard/all-users",
+        name: "All Users",
         icon: <RiFolderAddLine />,
     },
     {
-        path: "/dashboard/my-review",
-        name: "My Review",
+        path: "/dashboard/pending-orders",
+        name: "Pending Orders",
         icon: <MdPreview/>,
     },
     {
-        path: "/dashboard/add-complain",
-        name: "Add Complain",
+        path: "/dashboard/confirmed-orders",
+        name: "Confirm Orders",
         icon: <MdOutlineLibraryAdd />,
 
+    },
+    {
+        path: "/dashboard/add-foods",
+        name: "Add Foods",
+        icon: <BsPencilSquare />,
+    },
+    {
+        path: "/dashboard/all-foods",
+        name: "All Foods",
+        icon: <BsPencilSquare />,
+    },
+    {
+        path: "/dashboard/user-reviews",
+        name: "User Reviews",
+        icon: <BsPencilSquare />,
+    },
+    {
+        path: "/dashboard/user-complains",
+        name: "User Complains",
+        icon: <BsPencilSquare />,
     },
     {
         path: "/dashboard/update-password",
@@ -45,7 +65,7 @@ const routes = [
     
 ];
 
-const UserSidebarMenu = () => {
+const AdminSidebarMenu = () => {
 
     return (
         <div>
@@ -71,7 +91,7 @@ const UserSidebarMenu = () => {
                             </div>
                             <div className='flex flex-col items-center justify-start'>
                                 <h1 className='text-lg font-semibold ml-4 '>School Space</h1>
-                                <p className='text-sm font-semibold '>Role: User</p>
+                                <p className='text-sm font-semibold '>Role: Admin</p>
                             </div>
                             <label for="my-drawer-2"><RiCloseLine for="my-drawer-2" className='text-2xl cursor-pointer lg:hidden' /></label>
                         </div>
@@ -102,4 +122,4 @@ const UserSidebarMenu = () => {
     );
 };
 
-export default UserSidebarMenu;
+export default AdminSidebarMenu;
