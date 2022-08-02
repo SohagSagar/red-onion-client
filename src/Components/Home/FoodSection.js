@@ -12,14 +12,12 @@ const FoodSection = () => {
                 <p className='px-5'>Dinner</p>
             </div>
 
-            <div class="card w-96 bg-base-100 food-card text-center mt-10 cursor-pointer">
+            <div class="card w-80 bg-base-100 food-card text-center mt-10 cursor-pointer">
                 <figure><img className='w-44 mt-10' src={food} alt="Shoes" /></figure>
                 <div class="card-body">
                     <h2 class=" font-semibold">Egges Benedict</h2>
                     <p className='text-gray-500 leading-none'>How we dream about our future</p>
                     <div className='text-lg'><p className=' font-semibold '><TbCurrencyDollar className='inline text-[22px] mb-1 '/>8.<span>999</span></p></div>
-
-
 
                 </div>
             </div>

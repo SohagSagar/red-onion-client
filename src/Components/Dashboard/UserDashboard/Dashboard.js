@@ -4,7 +4,7 @@ import SidebarMenu from 'react-bootstrap-sidebar-menu';
 const Dashboard = () => {
     return (
         <div>
-            <p></p>
+            <p>dashboardxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
         </div>
 
 

@@ -1,0 +1,29 @@
+.routes {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    ;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    color: #353434;
+    border-radius: 10px;
+    gap: 10px;
+    font-weight: 600;
+    padding: 10px 10px;
+    border-right: 4px solid transparent;
+    text-decoration: none;
+  }
+  .link:hover {
+    background: #f3879d;
+  }
+  .active {
+    background: #eaf6fc;
+    color: #F91944;
+    border-radius: 10px;
+  }
+  .active:hover{
+    color: #353434;
+  }
