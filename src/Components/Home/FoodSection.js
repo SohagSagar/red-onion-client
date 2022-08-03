@@ -1,26 +1,50 @@
 import React from 'react';
 import food from '../../resources/breakfast1.png';
-import { TbCurrencyDollar } from 'react-icons/tb';
+import Loading from '../SharedComponents/Loading';
 import '../../Styles/FoodSection.css';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
+import { useEffect } from 'react';
+import FoodCard from './FoodCard';
 
 const FoodSection = () => {
+    const [category, setCategory] = useState('Breakfast');
+    const [activeBtn, setActiveBtn] = useState('breakfast');
+
+    const { data: foods, isLoading } = useQuery(['food-items', category], () => fetch(`http://localhost:5000/food-items/${category}`).then(res => res.json()))
+
+
+    const breakfastBtn = () => {
+        setActiveBtn('breakfast');
+        setCategory('Breakfast');
+    }
+    const lunchBtn = () => {
+        setActiveBtn('lunch');
+        setCategory('Lunch');
+    }
+    const dinnerBtn = () => {
+        setActiveBtn('dinner');
+        setCategory('Dinner');
+    }
     return (
         <div className='lg:px-12 text-accent py-12'>
             <div className='flex justify-center items-center '>
-                <p className='px-5'>Breakfast</p>
-                <p className='px-5'>Lunch</p>
-                <p className='px-5'>Dinner</p>
+                <p onClick={breakfastBtn} className={`mx-5  font-semibold cursor-pointer ${activeBtn === 'breakfast' && 'border-b-2 border-red-500 text-primary py-2'}`}>Breakfast</p>
+                <p onClick={lunchBtn} className={`mx-5  font-semibold cursor-pointer ${activeBtn === 'lunch' && 'border-b-2 border-red-500 text-primary py-2'}`}>Lunch</p>
+                <p onClick={dinnerBtn} className={`mx-5  font-semibold cursor-pointer ${activeBtn === 'dinner' && 'border-b-2 border-red-500 text-primary py-2'}`}>Dinner</p>
             </div>
 
-            <div class="card w-80 bg-base-100 food-card text-center mt-10 cursor-pointer">
-                <figure><img className='w-44 mt-10' src={food} alt="Shoes" /></figure>
-                <div class="card-body">
-                    <h2 class=" font-semibold">Egges Benedict</h2>
-                    <p className='text-gray-500 leading-none'>How we dream about our future</p>
-                    <div className='text-lg'><p className=' font-semibold '><TbCurrencyDollar className='inline text-[22px] mb-1 '/>8.<span>999</span></p></div>
-
-                </div>
-            </div>
+            {
+                isLoading ? <Loading /> :
+                    <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center'>
+                        {
+                            foods?.map(food => <FoodCard
+                                key={food._id}
+                                food={food}
+                            ></FoodCard>)
+                        }
+                    </div>
+            }
         </div>
     );
 };
