@@ -1,6 +1,6 @@
 .food-details-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 3rem;
 }
@@ -30,4 +30,5 @@
 }
 .right-container>img{
     width: 30rem;
+    
 }

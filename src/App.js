@@ -40,7 +40,7 @@ function App() {
         <Route path={"/"} element={
           <>
             <Home />
-            {/* <FoodDetails/> */}
+            
             <FoodSection />
             <WhyChooseUs />
           </>
@@ -74,8 +74,8 @@ function App() {
         </Route>
         }
         
-
-        <Route path="login" element={<Login />}></Route>
+        <Route path="/food-details/:id" element={<FoodDetails/>}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="*" element={<> not found</>} />
       </Routes>
