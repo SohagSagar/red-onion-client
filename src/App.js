@@ -29,6 +29,8 @@ import UserComplains from "./Components/Dashboard/AdminDashboard/UserComplains";
 import AllFoods from "./Components/Dashboard/AdminDashboard/AllFoods";
 import { useState } from "react";
 import Checkout from "./Components/Checkout/Checkout";
+import RequireAuth from "./Components/SharedComponents/RequireAuth";
+import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
 
 
 
@@ -53,7 +55,7 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="*" element={<> not found</>} />
 
-        <Route path="/checkout" element={<Checkout cartItems={cartItems}/>}></Route>
+        <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems}/></RequireAuth>}></Route>
         {
           !user ?
             <Route path="/dashboard" element={<AdminSidebarMenu />} >
@@ -73,6 +75,7 @@ function App() {
             <Route path="/dashboard" element={<UserSidebarMenu />} >
               <Route index element={<Dashboard />} />
               <Route path="/dashboard/my-orders" element={<MyOrders />} />
+              <Route path="/dashboard/my-order-details/:id" element={<MyOrderDetails />} />
               <Route path="/dashboard/add-review" element={<AddReview />} />
               <Route path="/dashboard/my-review" element={<MyReviews />} />
               <Route path="/dashboard/add-complain" element={<AddComplain />} />

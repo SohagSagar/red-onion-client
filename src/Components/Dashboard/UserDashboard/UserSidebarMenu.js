@@ -6,6 +6,8 @@ import { MdOutlineLibraryAdd,MdPreview } from "react-icons/md";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { NavLink, Outlet, Link } from "react-router-dom";
 import '../../../Styles/SidebarMenu.css';
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from '../../../Firebase/Firebase';
 
 
 
@@ -45,7 +47,10 @@ const routes = [
     
 ];
 
+
+
 const UserSidebarMenu = () => {
+    const [user,loading]=useAuthState(auth);
 
     return (
         <div>
@@ -66,11 +71,11 @@ const UserSidebarMenu = () => {
                             {/* user avatar in dashboard */}
                             <div class="avatar online">
                                 <div class="w-16 rounded-full">
-                                    <img src="https://placeimg.com/192/192/people" />
+                                    <img src={user?.photoURL} alt='user_image'/>
                                 </div>
                             </div>
                             <div className='flex flex-col items-center justify-start'>
-                                <h1 className='text-lg font-semibold ml-4 '>School Space</h1>
+                                <h1 className='text-lg font-semibold ml-4 '>{user?.displayName}</h1>
                                 <p className='text-sm font-semibold '>Role: User</p>
                             </div>
                             <label for="my-drawer-2"><RiCloseLine for="my-drawer-2" className='text-2xl cursor-pointer lg:hidden' /></label>

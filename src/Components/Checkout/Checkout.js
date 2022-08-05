@@ -31,6 +31,7 @@ const Checkout = ({ cartItems }) => {
             orderStatus: "Processing",
             email: user?.email
 
+
         }
         console.log('object');
 
@@ -46,7 +47,7 @@ const Checkout = ({ cartItems }) => {
                 if (data.insertedId) {
                     toast.success('Order place successfully')
                     deleteShoppingCart();
-                    // navigate('/dashboard');
+                    navigate('/dashboard/my-orders');
 
                 }
                 else {

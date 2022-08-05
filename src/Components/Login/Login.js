@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import logo from '../../resources/logo.png';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase';
 import toast from 'react-hot-toast';
@@ -18,6 +18,8 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const googleSignIn = () => {
         signInWithGoogle();
@@ -30,8 +32,8 @@ const Login = () => {
 
     useEffect(() => {
         if (user || googleUser) {
+            navigate(from, { replace: true });
             toast.success('Success! Welcome back.');
-            navigate('/');
         }
     }, [user, googleUser, navigate]);
 
