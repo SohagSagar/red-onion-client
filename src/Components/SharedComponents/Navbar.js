@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../Styles/Navbar.css';
 import logo from '../../resources/logo.png';
 import { Link, useNavigate } from "react-router-dom";
@@ -7,12 +7,56 @@ import auth from '../../Firebase/Firebase';
 import Loading from './Loading';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import CartModal from '../Cart/CartModal';
+import { getStoredCart } from '../Cart/CartInLocalStroage';
+import { async } from '@firebase/util';
 
-
-
-const Navbar = () => {
+const Navbar = ({ cartItems, setCardItems }) => {
     const [user, loading] = useAuthState(auth);
+    // const [savedCart, setSavedCart] = useState([])
+    const [cartModalStatus, setCartModalStatus] = useState(true)
     const navigate = useNavigate();
+
+
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        // declare the async data fetching function
+        const fetchData = async () => {
+            // get the data from the api
+            const data = await fetch(`http://localhost:5000/food-items`);
+            // convert the data to json
+            const json = await data.json();
+
+            // set state with the result
+            setProducts(json);
+        }
+        // call the function
+        fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, [])
+
+
+    useEffect(() => {
+        const storedCart = getStoredCart();
+        let addedProduct = {};
+        let savedCart = [];
+        if (products) {
+            for (const id in storedCart) {
+                addedProduct = products?.find(product => product._id === id);
+
+                if (addedProduct) {
+                    const quantity = storedCart[id];
+                    addedProduct.quantity = quantity;
+                    savedCart.push(addedProduct);
+                }
+            }
+        }
+        setCardItems(savedCart);
+    }, [products,cartItems]);
+
+
 
     //sign out user
     const signout = () => {
@@ -21,15 +65,20 @@ const Navbar = () => {
         navigate('/login');
 
     }
+
+
     if (loading) {
         return <Loading />
     }
+
     const menu = <>
         {
             user && <li className='px-10 text-accent italic'> Welcome {user?.displayName} </li>
         }
 
-        <li className=' text-accent'> Cart <sup className='p-1'>0</sup></li>
+        <label for="cartModal" className=' text-accent cursor-pointer'> Cart <sup className='p-1 text-primary text-lg'>{cartItems?.length}</sup></label>
+
+
         {
             !user ? <Link className='px-5 ' to="/login">Login</Link> :
                 <Link className='px-5 ' to="/dashboard">Dashboard</Link>
@@ -43,7 +92,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div class="lg:px-12 navbar bg-secondary  shadow-2xl font-semibold ">
+        <div class="lg:px-12 navbar bg-secondary   font-semibold ">
             <div class="navbar-start flex items-center">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -61,7 +110,9 @@ const Navbar = () => {
                     {menu}
                 </ul>
             </div>
-            {/* <BsCartCheck/> */}
+            {
+                cartModalStatus && <CartModal cartItems={cartItems}></CartModal>
+            }
 
         </div>
     );

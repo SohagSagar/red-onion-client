@@ -1,16 +1,16 @@
 import React from 'react';
 import { TbCurrencyDollar } from 'react-icons/tb';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const FoodCard = ({food}) => {
-    const {_id,name,price,description,imageURL} = food;
-    const navegate=useNavigate()
-    
-    const foodDetails = (_id)=>{
+const FoodCard = ({ food }) => {
+    const { _id, name, price, description, imageURL } = food;
+    const navegate = useNavigate()
+
+    const foodDetails = (_id) => {
         navegate(`/food-details/${_id}`)
     }
     return (
-        <div onClick={()=>foodDetails(_id)} class="card w-80 h-[380px] bg-base-100 food-card text-center mt-10 cursor-pointer">
+        <div onClick={() => foodDetails(_id)} class="card w-80 h-[380px] bg-base-100 food-card text-center mt-10 cursor-pointer">
             <figure><img className='w-44 mt-10' src={imageURL} alt="Shoes" /></figure>
             <div class="card-body">
                 <h2 class=" font-semibold">{name}</h2>

@@ -1,10 +1,8 @@
 import React from 'react';
-import food from '../../resources/breakfast1.png';
 import Loading from '../SharedComponents/Loading';
 import '../../Styles/FoodSection.css';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useEffect } from 'react';
 import FoodCard from './FoodCard';
 
 const FoodSection = () => {

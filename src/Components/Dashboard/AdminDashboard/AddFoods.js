@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 
 const AddFoods = () => {
-    const { register,reset, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register,reset, handleSubmit,formState: { errors } } = useForm();
     const [imageURL, setImageURL] = useState('');
     const [loading, setLoading] = useState(false);
     const [dataLoading,setDataLoading]=useState(false);

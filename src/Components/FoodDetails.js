@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/FoodDetails.css'
-import food from '../resources/breakfast1.png';
 import { TbCurrencyDollar } from 'react-icons/tb';
 import { BsCart } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
+import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
+import toast from 'react-hot-toast';
+import { addToLocalStroage, getStoredCart } from './Cart/CartInLocalStroage';
 import { useQuery } from 'react-query';
-import Loading from './SharedComponents/Loading';
 
-const FoodDetails = () => {
+
+const FoodDetails = ({ cartItems, setCardItems }) => {
 
     const { id } = useParams();
     const [foodQuantity, setFoodQuantity] = useState(1);
     const [foodPrice, setFoodPrice] = useState(1);
-    const [targetFood, setTargetFood] = useState({})
+    const [targetFood, setTargetFood] = useState({});
+    
+
+    const handleAddToCart = (targetFood) => {
+        const existInCart = cartItems.find(items => items._id === targetFood._id)
+
+        if (!existInCart) {
+            const itemAddedToCart = [...cartItems, targetFood];
+            setCardItems(itemAddedToCart)
+            addToLocalStroage(targetFood._id, foodQuantity);
+            toast.success('Item added to cart');
+        } else {
+            toast.error('Item is Already Added In Cart !!');
+        }
+    }
 
 
     useEffect(() => {
@@ -31,14 +47,10 @@ const FoodDetails = () => {
         fetchData()
             // make sure to catch any error
             .catch(console.error);
-    }, [id])
+    }, [id]);
+
 
     const { name, price, imageURL, description } = targetFood;
-    // const price=55
-
-    console.log(targetFood);
-
-
     const minus = () => {
         foodQuantity < 2 ? alert("Quantity Cannot be 0") : setFoodQuantity(foodQuantity - 1);
     }
@@ -60,10 +72,10 @@ const FoodDetails = () => {
 
                 <div className="price flex items-center mt-5">
                     <h3 className='text-2xl font-semibold'><span><TbCurrencyDollar className='inline-block mb-1 mr-[-4px]' /></span>{foodPrice}</h3>
-                    <button className='btn btn-white quantity-btn w-28 rounded-full ml-5 text-xl'><span onClick={minus} className='mr-3 text-3xl text-primary'>-</span>{foodQuantity}<span onClick={plus} className='ml-3 text-3xl text-primary'>+</span></button>
+                    <p className='btn btn-white quantity-btn w-28 rounded-full ml-5 text-xl border-primary'><span onClick={minus} className='mr-3 text-3xl text-primary'>-</span>{foodQuantity}<span onClick={plus} className='ml-3 text-3xl text-primary'>+</span></p>
                 </div>
 
-                <button className='btn btn-primary rounded-full mt-8 w-36 text-xl'><span><BsCart className='mr-2' /></span>Add</button>
+                <button onClick={() => handleAddToCart(targetFood)} className='btn btn-primary rounded-full mt-8 w-36 text-xl'><span><BsCart className='mr-2' /></span>Add</button>
             </div>
 
             <div className="right-container">
