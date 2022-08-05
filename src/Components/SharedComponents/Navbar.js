@@ -76,7 +76,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
             user && <li className='px-10 text-accent italic'> Welcome {user?.displayName} </li>
         }
 
-        <label for="cartModal" className=' text-accent cursor-pointer'> Cart <sup className='p-1 text-primary text-lg'>{cartItems?.length}</sup></label>
+        <label onClick={()=>setCartModalStatus(true)} for="cartModal" className=' text-accent cursor-pointer'> Cart <sup className='p-1 text-primary text-lg'>{cartItems?.length}</sup></label>
 
 
         {
@@ -111,7 +111,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
                 </ul>
             </div>
             {
-                cartModalStatus && <CartModal cartItems={cartItems}></CartModal>
+                cartModalStatus && <CartModal cartItems={cartItems} setCartModalStatus={setCartModalStatus}></CartModal>
             }
 
         </div>

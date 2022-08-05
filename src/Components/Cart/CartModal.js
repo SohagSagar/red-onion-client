@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CartItems from './CartItems';
 
-const CartModal = ({ cartItems }) => {
+const CartModal = ({ cartItems,setCartModalStatus }) => {
     return (
         <div>
             <input type="checkbox" id="cartModal" class="modal-toggle" />
@@ -19,7 +19,7 @@ const CartModal = ({ cartItems }) => {
                         ></CartItems>)
                     }
                     <div className="modal-action flex justify-center ">
-                        <button  for="cartModal" disabled={!cartItems?.length} className="btn btn-sm normal-case font-semibold"><Link to={'/checkout'}>Review Order</Link></button>
+                        <label onClick={()=>setCartModalStatus(false)} for="cartModal" disabled={!cartItems?.length} className="btn btn-sm normal-case font-semibold"><Link to={'/checkout'}>Review Order</Link></label>
 
                         <label for="cartModal" className="btn btn-sm normal-case btn-error text-white font-semibold">Close Cart</label>
 

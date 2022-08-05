@@ -1,15 +1,57 @@
 import React from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import auth from '../../../Firebase/Firebase';
 import Loading from '../../SharedComponents/Loading';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
+    // const [deleteRequest,setDeleteRequist]=useState(false)
     const email = user?.email;
-    const { data: products, isLoading } = useQuery(['products', user], () => fetch(`http://localhost:5000/my-order/${email}`).then(res => res.json()));
+    const { data: products, isLoading, refetch } = useQuery(['products', user], () => fetch(`http://localhost:5000/my-order/${email}`).then(res => res.json()));
 
+    const handleDelete = (id) => {
+
+        swal({
+            title: "Are you sure to delete?",
+            text: `Order ID: ${id}`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/my-order/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount) {
+                                toast.success('Item deleted successfully');
+                                refetch();
+                            }
+                            else {
+                                toast.error('Fail to delete item')
+                            }
+                        })
+                    //   swal("Poof! Your imaginary file has been deleted!", {
+                    //     icon: "success",
+                    //   });
+                    // } else {
+                    //   swal("Your imaginary file is safe!");
+                }
+            });
+
+        return;
+
+    }
 
     return (
         <div className='mx-auto'>
@@ -48,7 +90,7 @@ const MyOrders = () => {
                                                 <td className="badge badge-success mt-2 badge-sm">{product?.orderStatus}</td>
                                                 <td>{product.total}</td>
                                                 <td><>
-                                                <span className='text-green-500'><Link to={`/dashboard/my-order-details/${product?._id}`}>Details</Link></span> | <span>Delete</span>
+                                                    <span className='text-green-500'><Link to={`/dashboard/my-order-details/${product?._id}`}>Details</Link></span> | <span onClick={() => handleDelete(product?._id)} className='text-red-500 cursor-pointer'>Delete</span>
                                                 </></td>
                                             </tr>
                                         )
