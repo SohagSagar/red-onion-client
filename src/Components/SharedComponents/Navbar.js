@@ -54,7 +54,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
             }
         }
         setCardItems(savedCart);
-    }, [products,cartItems]);
+    }, [products]);
 
 
 

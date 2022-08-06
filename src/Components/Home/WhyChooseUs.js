@@ -14,7 +14,7 @@ const WhyChooseUs = () => {
         <div className='lg:px-12 text-accent'>
             <div className='flex justify-center items-center text-xl font-semibold'>
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
-                <div className='mx-2'>Why you chooose us</div>
+                <div className='mx-2'>Why you choose us</div>
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
             </div>
             <div className='flex justify-center text-gray-500 pb-12'>

@@ -31,6 +31,7 @@ import { useState } from "react";
 import Checkout from "./Components/Checkout/Checkout";
 import RequireAuth from "./Components/SharedComponents/RequireAuth";
 import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
+import Testimonials from "./Components/Home/Testimonials";
 
 
 
@@ -47,6 +48,7 @@ function App() {
             <Home />
             <FoodSection />
             <WhyChooseUs />
+            <Testimonials/>
           </>
         } />
 
