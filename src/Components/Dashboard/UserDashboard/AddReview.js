@@ -5,11 +5,14 @@ import { BiCloudUpload } from 'react-icons/bi';
 import { TiTick } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import auth from '../../../Firebase/Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const AddReview = () => {
+    const [user, userLoading] = useAuthState(auth);
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
-    const [loading, setLoading] = useState(false);
     const [dataLoading, setDataLoading] = useState(false);
+    const dateTime = new Date().toLocaleString();
 
 
     const requiredMessage = 'field is required';
@@ -18,25 +21,30 @@ const AddReview = () => {
 
     //handle form data to sent to the database
     const onSubmit = data => {
-        const addIteamData = {
+        const addReview = {
             ...data,
+            email:user?.email,
+            name:user?.displayName,
+            imageURL:user?.photoURL,
+            postOn:dateTime
 
         }
+        console.log(addReview);
+        
+
         setDataLoading(true)
-        fetch('http://localhost:5000/add-food', {
+        fetch('http://localhost:5000/user-review', {
             method: 'POST',
             headers: {
                 'content-type': "application/json"
             },
-            body: JSON.stringify(addIteamData)
+            body: JSON.stringify(addReview)
         })
             .then(res => res.json())
             .then(data => {
-                data?.insertedId ? toast.success('Iteam inserted successfully') : toast.error('Fail to insert iteam');
+                data?.insertedId ? toast.success('Review Added successfully') : toast.error('Fail to add review');
                 setDataLoading(false);
                 reset();
-
-
             })
 
 
@@ -116,7 +124,7 @@ const AddReview = () => {
 
 
                     <div class="card-actions justify-center  mt-5">
-                        <button type='submit' class={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Submit Review'}</button>
+                        <button disabled={userLoading} type='submit' class={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Submit Review'}</button>
                     </div>
 
                 </form>
