@@ -7,8 +7,7 @@ import toast from 'react-hot-toast';
 import Loading from '../SharedComponents/Loading';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { async } from '@firebase/util';
-import { wait } from '@testing-library/user-event/dist/utils';
+import '../../Styles/LoginPage.css'
 
 const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -58,9 +57,9 @@ const Signup = () => {
 
 
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen login-page py-12'>
 
-            <div class="card w-96 bg-base-100 signup-card mx-auto my-12">
+            <div class="card w-96 bg-base-100 signup-card mx-auto ">
                 <div class="card-body">
                     <div class="card-actions justify-center">
                         <img className='w-44' src={logo} alt="" srcset="" />
@@ -188,7 +187,7 @@ const Signup = () => {
                                     </>
                                 }
 
-                                <button type='submit' class="btn btn-primary w-full mt-4 normal-case">Sign Up</button>
+                                <button type='submit' class={`btn btn-primary w-full mt-4 normal-case ${loading | updating && 'loading'}`}>{loading | updating ? 'Loading ...' : 'Signup'}</button>
                             </form>
                         </div>
                     </div>

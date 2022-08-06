@@ -16,7 +16,7 @@ const MyReviews = () => {
                 <p className='text-sm'>My Review(s)</p>
             </div>
 
-            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-10'>
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-10 items-center justify-items-center'>
                 {
                     isLoading ? <Loading /> :
                         reviews.map(review =>

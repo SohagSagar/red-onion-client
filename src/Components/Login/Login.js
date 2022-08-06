@@ -52,11 +52,6 @@ const Login = () => {
     }, [error, googleError])
 
 
-
-    if (loading || googleLoading) {
-        return <Loading />
-    }
-
     return (
         <div className=''>
             <div className='min-h-screen login-page  flex justify-center items-center'>
@@ -125,12 +120,12 @@ const Login = () => {
                                         </>
                                     }
 
-                                    <button type='submit' class="btn btn-primary w-full mt-4 normal-case">Login</button>
+                                    <button disabled={googleLoading} type='submit' class={`btn btn-primary w-full mt-4 normal-case ${loading && 'loading'}`}>Login</button>
                                     <p className='text-primary mt-2 text-center'>New to Red Onion? <Link className="font-semibold" to={'/signup'}>Register Now</Link> </p>
                                 </form>
 
                                 <div class="divider">Or</div>
-                                <button onClick={() => googleSignIn()} type='submit' class="btn btn-primary w-full mt-1 normal-case">Continue With Google</button>
+                                <button disabled={googleLoading || loading} onClick={() => googleSignIn()} type='submit' class="btn btn-primary w-full mt-1 normal-case">Continue With Google</button>
                             </div>
                         </div>
 
