@@ -1,11 +1,9 @@
 import React from 'react';
 import { AiOutlineSmallDash } from 'react-icons/ai';
 import TestimonialCard from './TestimonialCard';
-import "../../Styles/SwiperStyle.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useQuery } from 'react-query';
 import Loading from '../SharedComponents/Loading';
 import { useState } from 'react';
 import { useEffect } from 'react';
