@@ -20,7 +20,6 @@ import UpdatePassword from "./Components/Dashboard/UserDashboard/UpdatePassword"
 import AdminSidebarMenu from "./Components/Dashboard/AdminDashboard/AdminSidebarMenu";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard/AdminDashboard";
 import AllOrders from "./Components/Dashboard/AdminDashboard/AllOrders";
-import AllUsers from "./Components/Dashboard/AdminDashboard/AllUsers";
 import PendingOrders from "./Components/Dashboard/AdminDashboard/PendingOrders";
 import ConfirmedOrders from "./Components/Dashboard/AdminDashboard/ConfirmedOrders";
 import AddFoods from "./Components/Dashboard/AdminDashboard/AddFoods";
@@ -34,6 +33,7 @@ import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails"
 import Testimonials from "./Components/Home/Testimonials";
 import { useQuery } from "react-query";
 import { signOut } from "firebase/auth";
+import GetAllUser from "./Components/Dashboard/AdminDashboard/GetAllUser";
 
 
 
@@ -77,7 +77,7 @@ function App() {
             <Route path="/dashboard" element={<AdminSidebarMenu />} >
               <Route index element={<AdminDashboard />} />
               <Route path="/dashboard/all-orders" element={<AllOrders />} />
-              <Route path="/dashboard/all-users" element={<AllUsers />} />
+              <Route path="/dashboard/all-users" element={<GetAllUser />} />
               <Route path="/dashboard/pending-orders" element={<PendingOrders />} />
               <Route path="/dashboard/confirmed-orders" element={<ConfirmedOrders />} />
               <Route path="/dashboard/add-foods" element={<AddFoods />} />

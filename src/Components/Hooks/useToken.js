@@ -8,7 +8,8 @@ const useToken = (user) => {
     useEffect(() => {
         const email= user?.user?.email;
         const name = user?.user?.displayName;
-        const currentUser = {email:email,name:name}
+        const dateTime = new Date().toLocaleString();
+        const currentUser = {email:email,name:name,lastLogged:dateTime}
         if(email){
             fetch(`http://localhost:5000/users/${email}`,{
                 method:'PUT',
