@@ -7,12 +7,30 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import auth from '../../../Firebase/Firebase';
 import Loading from '../../SharedComponents/Loading';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
-    // const [deleteRequest,setDeleteRequist]=useState(false)
+    const navigate = useNavigate()
+
     const email = user?.email;
-    const { data: products, isLoading, refetch } = useQuery(['products', user], () => fetch(`http://localhost:5000/my-order/${email}`).then(res => res.json()));
+    const { data: products, isLoading, refetch } = useQuery(['products', user], () => fetch(`http://localhost:5000/my-order/${email}`, {
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => {
+        if (res.status === 403 || res.status === 401) {
+            signOut(auth);
+            navigate('/login');
+            localStorage.removeItem('accessToken');
+            toast.error('Forbidden Access');
+        }
+        return res.json();
+    }))
+
 
     const handleDelete = (id) => {
 
@@ -41,11 +59,7 @@ const MyOrders = () => {
                                 toast.error('Fail to delete item')
                             }
                         })
-                    //   swal("Poof! Your imaginary file has been deleted!", {
-                    //     icon: "success",
-                    //   });
-                    // } else {
-                    //   swal("Your imaginary file is safe!");
+
                 }
             });
 
@@ -81,7 +95,7 @@ const MyOrders = () => {
 
                                 {
                                     isLoading ? <Loading /> :
-                                        [...products].reverse()?.map((product, index) =>
+                                        [...products]?.reverse()?.map((product, index) =>
                                             <tr key={product?._id}>
                                                 <td>{index + 1}</td>
                                                 <td >{product?._id}</td>

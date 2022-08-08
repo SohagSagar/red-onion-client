@@ -11,12 +11,12 @@ const MyReviews = () => {
     const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`http://localhost:5000/user-review/${email}`).then(res => res.json()));
 
     return (
-        <div className='mx-auto'>
+        <div className='mx-auto pb-5'>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>My Review(s)</p>
             </div>
 
-            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-10 items-center justify-items-center'>
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 items-center justify-items-center'>
                 {
                     isLoading ? <Loading /> :
                         reviews.map(review =>

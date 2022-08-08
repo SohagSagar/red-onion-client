@@ -5,8 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase';
 import toast from 'react-hot-toast';
-import Loading from '../SharedComponents/Loading';
 import '../../Styles/LoginPage.css';
+import useToken from '../Hooks/useToken';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -26,19 +26,20 @@ const Login = () => {
     }
 
     const onSubmit = data => {
-        console.log(data);
-        signInWithEmailAndPassword(data.email, data.password)
+        signInWithEmailAndPassword(data?.email, data?.password);
     }
 
+    const [token]=useToken(user || googleUser);
+    
     useEffect(() => {
-        if (user || googleUser) {
+       
+        if (token) {
             navigate(from, { replace: true });
             toast.success('Success! Welcome back.');
         }
-    }, [user, googleUser, navigate]);
+    }, [user, googleUser, navigate,from,token]);
 
-    useEffect(() => {
-        console.log(googleError?.code?.message);    
+    useEffect(() => {   
         if (error || googleError) {
 
             if (googleError) {

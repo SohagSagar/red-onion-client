@@ -36,8 +36,8 @@ const MyReviewCard = ({ review, refetch }) => {
     }
 
     return (
-        <div class=" w-96 h-52 bg-base-100 border-2 border-primary  rounded-xl mt-20 mx-auto">
-            <div class="card-body pb-2">
+        <div class=" w-96 bg-base-100 border-2 border-primary rounded-xl mt-20 mx-auto">
+            <div class="card-body pb-2  h-60">
                 <div class="avatar mx-auto mt-[-80px] z-100  ">
                     <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={imageURL} alt={'reviewer_image'} />
@@ -101,7 +101,7 @@ const MyReviewCard = ({ review, refetch }) => {
 
                 <small className='mt-5 text-gray-400 text-center'>Posted on {postOn}</small>
             </div>
-            <button onClick={() => handleDeleteReview(_id)} class="btn btn-sm btn-primary text-white w-full rounded-full btn-wide mt-2 ">Remove</button>
+            <button onClick={() => handleDeleteReview(_id)} class="btn btn-sm btn-primary text-white w-full rounded-b-lg  rounded-t-none ">Remove</button>
         </div>
     );
 };

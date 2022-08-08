@@ -32,12 +32,19 @@ import Checkout from "./Components/Checkout/Checkout";
 import RequireAuth from "./Components/SharedComponents/RequireAuth";
 import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
 import Testimonials from "./Components/Home/Testimonials";
+import { useQuery } from "react-query";
 
 
 
 function App() {
   const [user, loading] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
+  const [verifySuperAdmin,setVerifySuperAdmin]=useState(false)
+  const {data:superAdmin,isLoading}=useQuery(['super-admin',user], ()=>fetch(`http://localhost:5000/super-admin/${user?.email}`).then(res=>{
+    res.status===200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
+    return res.json()
+  }))
+
   return (
     <div className="text-accent ">
 
@@ -59,7 +66,7 @@ function App() {
 
         <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems}/></RequireAuth>}></Route>
         {
-          !user ?
+          verifySuperAdmin ?
             <Route path="/dashboard" element={<AdminSidebarMenu />} >
               <Route index element={<AdminDashboard />} />
               <Route path="/dashboard/all-orders" element={<AllOrders />} />

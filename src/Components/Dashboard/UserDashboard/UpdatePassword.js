@@ -22,8 +22,9 @@ const UpdatePassword = () => {
         <div class="card w-96 bg-base-100 border mx-auto mt-10">
             <div class="card-body">
                 <h2 class="text-xl font-semibold text-center ">Reset Password</h2>
-                <input className='text-center' disabled value={user?.email} type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-
+                <div className='p-2 bg-slate-200 rounded-xl'>
+                  <p className='text-center font-semibold '>{user?.email}</p>
+                </div>
                 <button disabled={sending || loading} onClick={() => handleResetPassword()} class="btn btn-sm rounded-full btn-primary mt-2 normal-case">Sent Reset Password Link</button>
 
             </div>

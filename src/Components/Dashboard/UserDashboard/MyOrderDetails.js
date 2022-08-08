@@ -6,7 +6,13 @@ import Loading from '../../SharedComponents/Loading';
 const MyOrderDetails = () => {
     const { id } = useParams();
     console.log(id);
-    const { data: orderItems, isLoading } = useQuery(['item-details',id], () => fetch(`http://localhost:5000/my-order-details/${id}`).then(res => res.json()));
+    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`http://localhost:5000/my-order-details/${id}`,{
+        headers:{
+            'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()));
+
+    console.log(error);
 
     if (isLoading) {
         return <Loading></Loading>
@@ -28,7 +34,7 @@ const MyOrderDetails = () => {
             <div className='lg:w-[800px] mx-auto border rounded-lg mt-10'>
                 <p className="text-xl font-semibold text-center">Order Details</p><hr />
                 {
-                    !orderItems.items.length ? <p className='text-center text-lg my-12'>No product to review</p> :
+                    !orderItems?.items?.length | orderItems===null ? <p className='text-center text-lg my-12'>No product to review</p> :
 
                         <div className="overflow-x-auto my-5">
                             <table className="table w-full">

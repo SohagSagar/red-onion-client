@@ -9,11 +9,10 @@ import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import CartModal from '../Cart/CartModal';
 import { getStoredCart } from '../Cart/CartInLocalStroage';
-import { async } from '@firebase/util';
+
 
 const Navbar = ({ cartItems, setCardItems }) => {
     const [user, loading] = useAuthState(auth);
-    // const [savedCart, setSavedCart] = useState([])
     const [cartModalStatus, setCartModalStatus] = useState(true)
     const navigate = useNavigate();
 
@@ -67,9 +66,9 @@ const Navbar = ({ cartItems, setCardItems }) => {
     }
 
 
-    if (loading) {
-        return <Loading />
-    }
+    // if (loading) {
+    //     return <Loading />
+    // }
 
     const menu = <>
         {
