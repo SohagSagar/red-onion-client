@@ -1,16 +1,29 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import auth from '../../../Firebase/Firebase';
 import Loading from '../../SharedComponents/Loading';
 
 const MyOrderDetails = () => {
+    const navigate = useNavigate()
     const { id } = useParams();
     console.log(id);
     const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`http://localhost:5000/my-order-details/${id}`,{
         headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then(res => res.json()));
+    }).then(res => {
+        if (res.status === 403 || res.status === 401) {
+            signOut(auth);
+            navigate('/login');
+            localStorage.removeItem('accessToken');
+            toast.error('Forbidden Access');
+        }
+        
+        return res.json();
+    }))
 
     console.log(error);
 

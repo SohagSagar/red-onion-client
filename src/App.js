@@ -3,10 +3,10 @@ import Home from "./Components/Home/Home";
 import WhyChooseUs from "./Components/Home/WhyChooseUs";
 import Footer from "./Components/SharedComponents/Footer";
 import Navbar from "./Components/SharedComponents/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Login/Signup";
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import Dashboard from "./Components/Dashboard/UserDashboard/Dashboard";
 import FoodDetails from "./Components/FoodDetails";
 import UserSidebarMenu from "./Components/Dashboard/UserDashboard/UserSidebarMenu";
@@ -33,14 +33,21 @@ import RequireAuth from "./Components/SharedComponents/RequireAuth";
 import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
 import Testimonials from "./Components/Home/Testimonials";
 import { useQuery } from "react-query";
+import { signOut } from "firebase/auth";
 
 
 
 function App() {
+  const navigate = useNavigate()
   const [user, loading] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
   const [verifySuperAdmin,setVerifySuperAdmin]=useState(false)
-  const {data:superAdmin,isLoading}=useQuery(['super-admin',user], ()=>fetch(`http://localhost:5000/super-admin/${user?.email}`).then(res=>{
+  const {data:superAdmin,isLoading}=useQuery(['super-admin',user], ()=>fetch(`http://localhost:5000/super-admin/${user?.email}`,{
+    headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+}).then(res=>{
     res.status===200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
     return res.json()
   }))

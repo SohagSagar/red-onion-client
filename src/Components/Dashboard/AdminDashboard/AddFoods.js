@@ -5,12 +5,16 @@ import { BiCloudUpload } from 'react-icons/bi';
 import { TiTick } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import { signOut } from 'firebase/auth';
+import auth from '../../../Firebase/Firebase';
+import { useNavigate } from 'react-router-dom';
 
 const AddFoods = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
     const [imageURL, setImageURL] = useState('');
     const [loading, setLoading] = useState(false);
     const [dataLoading,setDataLoading]=useState(false);
+    const navigate = useNavigate()
 
 
     const requiredMessage = 'field is required';
@@ -46,11 +50,20 @@ const AddFoods = () => {
         fetch('http://localhost:5000/add-food', {
             method: 'POST',
             headers: {
-                'content-type': "application/json"
+                'content-type': "application/json",
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(addIteamData)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403 || res.status === 401) {
+                    signOut(auth);
+                    navigate('/login');
+                    localStorage.removeItem('accessToken');
+                    toast.error('Forbidden Access');
+                }
+                return res.json()
+            })
             .then(data => {
                 data?.insertedId ? toast.success('Iteam inserted successfully') : toast.error('Fail to insert iteam');
                 setDataLoading(false);
