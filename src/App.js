@@ -3,7 +3,7 @@ import Home from "./Components/Home/Home";
 import WhyChooseUs from "./Components/Home/WhyChooseUs";
 import Footer from "./Components/SharedComponents/Footer";
 import Navbar from "./Components/SharedComponents/Navbar";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Login/Signup";
 import { Toaster } from 'react-hot-toast';
@@ -38,10 +38,10 @@ import Page404 from "./Components/SharedComponents/Page404";
 
 
 function App() {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
   const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
-  const { data: superAdmin, isLoading } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+  const { data: superAdmin } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
     headers: {
       'content-type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`

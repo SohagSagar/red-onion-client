@@ -1,15 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import auth from '../../../Firebase/Firebase';
 import Loading from '../../SharedComponents/Loading';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { async } from '@firebase/util';
 
 const AllFoods = () => {
     const navigate = useNavigate()

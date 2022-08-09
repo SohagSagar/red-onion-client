@@ -4,7 +4,7 @@ import { AiOutlineDashboard} from "react-icons/ai";
 import { BsBook, BsPencilSquare } from "react-icons/bs";
 import { MdOutlineLibraryAdd,MdPreview } from "react-icons/md";
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { NavLink, Outlet, Link } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import '../../../Styles/SidebarMenu.css';
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from '../../../Firebase/Firebase';

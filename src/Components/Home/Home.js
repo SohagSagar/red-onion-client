@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Styles/Home.css'
-import bannerBg from '../../resources/bannerbackground.png';
+
 
 
 const Home = () => {

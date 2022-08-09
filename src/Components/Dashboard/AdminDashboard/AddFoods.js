@@ -4,7 +4,6 @@ import { MdError } from 'react-icons/md';
 import { BiCloudUpload } from 'react-icons/bi';
 import { TiTick } from 'react-icons/ti';
 import toast from 'react-hot-toast';
-import { useQuery } from 'react-query';
 import { signOut } from 'firebase/auth';
 import auth from '../../../Firebase/Firebase';
 import { useNavigate } from 'react-router-dom';

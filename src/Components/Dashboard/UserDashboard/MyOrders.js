@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MdError } from 'react-icons/md';
-import { BiCloudUpload } from 'react-icons/bi';
-import { TiTick } from 'react-icons/ti';
 import toast from 'react-hot-toast';
-import { useQuery } from 'react-query';
 import auth from '../../../Firebase/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AddReview = () => {
     const [user, userLoading] = useAuthState(auth);

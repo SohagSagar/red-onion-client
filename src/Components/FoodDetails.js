@@ -3,10 +3,8 @@ import '../Styles/FoodDetails.css'
 import { TbCurrencyDollar } from 'react-icons/tb';
 import { BsCart } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 import toast from 'react-hot-toast';
-import { addToLocalStroage, getStoredCart } from './Cart/CartInLocalStroage';
-import { useQuery } from 'react-query';
+import { addToLocalStroage } from './Cart/CartInLocalStroage';
 
 
 const FoodDetails = ({ cartItems, setCardItems }) => {
