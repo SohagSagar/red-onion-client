@@ -171,7 +171,7 @@ const AllOrders = () => {
                                                 </td>
                                                 <td>{product.total}</td>
                                                 <td><>
-                                                    <span onClick={() => (handleChangeStatus(product._id, 'Canceled'))} className='text-red-500 cursor-pointer'>Cancel</span> | <span onClick={() => handledelete(product?._id)} className='text-red-500 cursor-pointer'>Delete</span>
+                                                    <button disabled={product?.orderStatus === 'Canceled'} onClick={() => (handleChangeStatus(product._id, 'Canceled'))} className='text-red-500 cursor-pointer  btn-link'>Cancel</button> | <span onClick={() => handledelete(product?._id)} className='text-red-500 cursor-pointer'>Delete</span>
                                                 </></td>
                                             </tr>
                                         )
