@@ -1,8 +1,12 @@
 import React from 'react';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
+import { signOut } from 'firebase/auth';
+import auth from '../../../Firebase/Firebase';
+import { useNavigate } from 'react-router-dom';
 const MyReviewCard = ({ review, refetch }) => {
     const { _id, name, profession, imageURL, rating, postOn, review: userReview } = review;
+    const navigate = useNavigate()
     const handleDeleteReview = (_id) => {
         swal({
             title: "Are you sure to delete?",
@@ -16,10 +20,19 @@ const MyReviewCard = ({ review, refetch }) => {
                     fetch(`http://localhost:5000/user-review/${_id}`, {
                         method: 'DELETE',
                         headers: {
-                            'content-type': 'application/json'
-                        }
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
                     })
-                        .then(res => res.json())
+                        .then(res => {
+                            if (res.status === 403 || res.status === 401) {
+                                signOut(auth);
+                                navigate('/login');
+                                localStorage.removeItem('accessToken');
+                                toast.error('Forbidden Access');
+                            }
+                            return res.json();
+                        })
                         .then(data => {
                             if (data.deletedCount) {
                                 toast.success('Item deleted successfully');

@@ -6,7 +6,7 @@ import Navbar from "./Components/SharedComponents/Navbar";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Login/Signup";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Dashboard from "./Components/Dashboard/UserDashboard/Dashboard";
 import FoodDetails from "./Components/FoodDetails";
 import UserSidebarMenu from "./Components/Dashboard/UserDashboard/UserSidebarMenu";
@@ -32,49 +32,52 @@ import RequireAuth from "./Components/SharedComponents/RequireAuth";
 import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
 import Testimonials from "./Components/Home/Testimonials";
 import { useQuery } from "react-query";
-import { signOut } from "firebase/auth";
 import GetAllUser from "./Components/Dashboard/AdminDashboard/GetAllUser";
+import Page404 from "./Components/SharedComponents/Page404";
 
 
 
 function App() {
-  const navigate = useNavigate()
   const [user, loading] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
-  const [verifySuperAdmin,setVerifySuperAdmin]=useState(false)
-  const {data:superAdmin,isLoading}=useQuery(['super-admin',user], ()=>fetch(`http://localhost:5000/super-admin/${user?.email}`,{
+  const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
+  const { data: superAdmin, isLoading } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
     headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'content-type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('accessToken')}`
     }
-}).then(res=>{
-    res.status===200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
+  }).then(res => {
+    res.status === 200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
     return res.json()
   }))
 
   return (
     <div className="text-accent ">
 
-      <Navbar cartItems={cartItems} setCardItems={setCardItems}/>
+      <Navbar cartItems={cartItems} setCardItems={setCardItems} />
+
+      {/* //public routes */}
       <Routes>
+
         <Route path={"/"} element={
           <>
             <Home />
             <FoodSection />
             <WhyChooseUs />
-            <Testimonials/>
+            <Testimonials />
           </>
         } />
 
-        <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems}/>}></Route>
+        <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="*" element={<> not found</>} />
 
-        <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems}/></RequireAuth>}></Route>
+        {/* //Protected routes */}
+        <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} /></RequireAuth>}></Route>
         {
           verifySuperAdmin ?
-            <Route path="/dashboard" element={<AdminSidebarMenu />} >
+
+            <Route path="/dashboard" element={<RequireAuth><AdminSidebarMenu /></RequireAuth>} >
               <Route index element={<AdminDashboard />} />
               <Route path="/dashboard/all-orders" element={<AllOrders />} />
               <Route path="/dashboard/all-users" element={<GetAllUser />} />
@@ -85,10 +88,11 @@ function App() {
               <Route path="/dashboard/user-reviews" element={<UserReviews />} />
               <Route path="/dashboard/user-complains" element={<UserComplains />} />
               <Route path="/dashboard/update-password" element={<UpdatePassword />} />
-
             </Route>
-            :
-            <Route path="/dashboard" element={<UserSidebarMenu />} >
+
+            : user &&
+
+            <Route path="/dashboard" element={<RequireAuth><UserSidebarMenu /></RequireAuth>}>
               <Route index element={<Dashboard />} />
               <Route path="/dashboard/my-orders" element={<MyOrders />} />
               <Route path="/dashboard/my-order-details/:id" element={<MyOrderDetails />} />
@@ -96,10 +100,10 @@ function App() {
               <Route path="/dashboard/my-review" element={<MyReviews />} />
               <Route path="/dashboard/add-complain" element={<AddComplain />} />
               <Route path="/dashboard/update-password" element={<UpdatePassword />} />
-
             </Route>
-        }
 
+        }
+        <Route path="*" element={<Page404 />} />
 
       </Routes>
 

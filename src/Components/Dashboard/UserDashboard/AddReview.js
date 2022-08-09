@@ -7,13 +7,15 @@ import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import auth from '../../../Firebase/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AddReview = () => {
     const [user, userLoading] = useAuthState(auth);
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const [dataLoading, setDataLoading] = useState(false);
     const dateTime = new Date().toLocaleString();
-
+    const navigate = useNavigate()
 
     const requiredMessage = 'field is required';
     // const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
@@ -37,11 +39,20 @@ const AddReview = () => {
         fetch('http://localhost:5000/user-review', {
             method: 'POST',
             headers: {
-                'content-type': "application/json"
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(addReview)
         })
-            .then(res => res.json())
+            .then(res =>{
+                if (res.status === 403 || res.status === 401) {
+                    signOut(auth);
+                    navigate('/login');
+                    localStorage.removeItem('accessToken');
+                    toast.error('Forbidden Access');
+                }
+                return res.json();
+            })
             .then(data => {
                 data?.insertedId ? toast.success('Review Added successfully') : toast.error('Fail to add review');
                 setDataLoading(false);

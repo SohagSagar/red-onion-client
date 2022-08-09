@@ -60,6 +60,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
     //sign out user
     const signout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
         toast.success('Signout successfully');
         navigate('/login');
 
