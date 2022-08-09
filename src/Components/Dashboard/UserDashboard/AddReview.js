@@ -26,7 +26,8 @@ const AddReview = () => {
             email:user?.email,
             name:user?.displayName,
             imageURL:user?.photoURL,
-            postOn:dateTime
+            postOn:dateTime,
+            status:'Inactive'
 
         }
         console.log(addReview);

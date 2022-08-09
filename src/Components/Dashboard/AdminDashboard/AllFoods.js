@@ -96,9 +96,9 @@ const AllFoods = () => {
                                 </select>
                             </div>
                         </div>
-                        <table className="table table-compact lg:w-[1000px] font-semibold ">
+                        <table className="table table-compact lg:w-[1000px] font-semibold">
 
-                            <thead >
+                            <thead className=''>
                                 <tr>
                                     <th>SL</th>
                                     <th>Food Image</th>
