@@ -4,7 +4,6 @@ import logo from '../../resources/logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase';
-import Loading from './Loading';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import CartModal from '../Cart/CartModal';
@@ -12,7 +11,7 @@ import { getStoredCart } from '../Cart/CartInLocalStroage';
 
 
 const Navbar = ({ cartItems, setCardItems }) => {
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [cartModalStatus, setCartModalStatus] = useState(true)
     const navigate = useNavigate();
 

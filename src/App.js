@@ -20,8 +20,6 @@ import UpdatePassword from "./Components/Dashboard/UserDashboard/UpdatePassword"
 import AdminSidebarMenu from "./Components/Dashboard/AdminDashboard/AdminSidebarMenu";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard/AdminDashboard";
 import AllOrders from "./Components/Dashboard/AdminDashboard/AllOrders";
-import PendingOrders from "./Components/Dashboard/AdminDashboard/PendingOrders";
-import ConfirmedOrders from "./Components/Dashboard/AdminDashboard/ConfirmedOrders";
 import AddFoods from "./Components/Dashboard/AdminDashboard/AddFoods";
 import UserReviews from "./Components/Dashboard/AdminDashboard/UserReviews";
 import UserComplains from "./Components/Dashboard/AdminDashboard/UserComplains";
@@ -81,8 +79,6 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="/dashboard/all-orders" element={<AllOrders />} />
               <Route path="/dashboard/all-users" element={<GetAllUser />} />
-              <Route path="/dashboard/pending-orders" element={<PendingOrders />} />
-              <Route path="/dashboard/confirmed-orders" element={<ConfirmedOrders />} />
               <Route path="/dashboard/add-foods" element={<AddFoods />} />
               <Route path="/dashboard/all-foods" element={<AllFoods />} />
               <Route path="/dashboard/user-reviews" element={<UserReviews />} />
