@@ -2,7 +2,6 @@ import React from 'react';
 import { RiCloseLine,RiFolderAddLine } from 'react-icons/ri';
 import { AiOutlineDashboard} from "react-icons/ai";
 import { BsBook, BsPencilSquare } from "react-icons/bs";
-import { MdOutlineLibraryAdd,MdPreview } from "react-icons/md";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { NavLink, Outlet, Link } from "react-router-dom";
 import '../../../Styles/SidebarMenu.css';
@@ -27,17 +26,6 @@ const routes = [
         path: "/dashboard/all-users",
         name: "All Users",
         icon: <RiFolderAddLine />,
-    },
-    {
-        path: "/dashboard/pending-orders",
-        name: "Pending Orders",
-        icon: <MdPreview/>,
-    },
-    {
-        path: "/dashboard/confirmed-orders",
-        name: "Confirm Orders",
-        icon: <MdOutlineLibraryAdd />,
-
     },
     {
         path: "/dashboard/add-foods",
