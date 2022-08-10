@@ -100,7 +100,7 @@ const MyOrders = () => {
                                                 <td >{product?._id}</td>
                                                 <td>{product?.dateTime}</td>
                                                 <td>{product?.items?.length}</td>
-                                                <td className="badge badge-success mt-2 badge-sm">{product?.orderStatus}</td>
+                                                <td className={`badge ${product?.orderStatus === 'Shipped' ? 'badge-warning' : product?.orderStatus === 'Canceled' && 'badge-error'} badge-success mt-2 badge-sm`}>{product?.orderStatus}</td>
                                                 <td>{product.total}</td>
                                                 <td><>
                                                     <span className='text-green-500'><Link to={`/dashboard/my-order-details/${product?._id}`}>Details</Link></span> | <span onClick={() => handleDelete(product?._id)} className='text-red-500 cursor-pointer'>Delete</span>

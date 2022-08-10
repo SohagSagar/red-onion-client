@@ -4,7 +4,7 @@ const TestimonialCard = ({ review }) => {
     const { name, profession, imageURL, rating, review: userReview } = review
     const dummyImage='https://i.ibb.co/64Jfd5g/dummy-user.png'
     return (
-        <div class=" w-96 h-52 bg-base-100 border-2 border-primary  rounded-xl mt-20 mx-auto">
+        <div class=" w-96 xs:max-w-xs h-52 bg-base-100 border-2 border-primary  rounded-xl mt-20 mx-auto">
             <div class="card-body">
                 <div class="avatar mx-auto mt-[-80px] z-100  ">
                     <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

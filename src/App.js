@@ -32,6 +32,7 @@ import Testimonials from "./Components/Home/Testimonials";
 import { useQuery } from "react-query";
 import GetAllUser from "./Components/Dashboard/AdminDashboard/GetAllUser";
 import Page404 from "./Components/SharedComponents/Page404";
+import Loading from "./Components/SharedComponents/Loading";
 
 
 
@@ -39,7 +40,7 @@ function App() {
   const [user] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
   const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
-  const { data: superAdmin } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+  const { data: superAdmin, isLoading } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
     headers: {
       'content-type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -49,8 +50,12 @@ function App() {
     return res.json()
   }))
 
+  // if(isLoading){return <Loading />}
+  
+
+
   return (
-    <div className="text-accent ">
+    <div className="text-accent xs:overflow-x-hidden">
 
       <Navbar cartItems={cartItems} setCardItems={setCardItems} />
 
@@ -70,13 +75,16 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
 
+         
+        
+
         {/* //Protected routes */}
         <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} /></RequireAuth>}></Route>
         {
           verifySuperAdmin ?
 
             <Route path="/dashboard" element={<RequireAuth><AdminSidebarMenu /></RequireAuth>} >
-              <Route index element={<AdminDashboard />} />
+              <Route index element={<AdminDashboard  />} />
               <Route path="/dashboard/all-orders" element={<AllOrders />} />
               <Route path="/dashboard/all-users" element={<GetAllUser />} />
               <Route path="/dashboard/add-foods" element={<AddFoods />} />
@@ -105,7 +113,7 @@ function App() {
 
       <Footer />
       <Toaster />
-    </div>
+    </div >
   );
 }
 

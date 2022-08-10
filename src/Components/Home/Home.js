@@ -6,15 +6,12 @@ import '../../Styles/Home.css'
 const Home = () => {
     return (
         <div>
-            <div class="hero min-h-screen homeBanner">
+            <div class="hero xs:pt-10 xs:h-80 lg:min-h-screen homeBanner">
                 <div class="hero-content text-center">
                     <div class="max-w-md mt-[-100px]">
-                        <h1 class="text-3xl font-semibold whitespace-nowrap mb-10">Best Food Waiting For Your Belly</h1>
+                        <h1 class="text-3xl xs:text-lg font-semibold whitespace-nowrap mb-10 xs:mb-3">Best Food Waiting For Your Belly</h1>
 
-                        <input className='rounded-lg h-10 w-96 pl-3 input-primary ' type="text" placeholder="Search Food Items" class="input w-full max-w-xs" />
-
-                       
-
+                        <input className='rounded-lg h-10 w-96 xs:w-64 pl-3 input-primary ' type="text" placeholder="Search Food Items" class="input w-full max-w-xs" />
 
                     </div>
                 </div>

@@ -72,20 +72,20 @@ const Navbar = ({ cartItems, setCardItems }) => {
 
     const menu = <>
         {
-            user && <li className='px-10 text-accent italic'> Welcome {user?.displayName} </li>
+            user && <li className='px-10 text-accent italic xs:hidden'> Welcome {user?.displayName} </li>
         }
 
-        <label onClick={()=>setCartModalStatus(true)} for="cartModal" className=' text-accent cursor-pointer'> Cart <sup className='p-1 text-primary text-lg'>{cartItems?.length}</sup></label>
+        <label onClick={()=>setCartModalStatus(true)} for="cartModal" className=' text-accent cursor-pointer xs:py-2 lg:py-0'> Cart <sup className='p-1 text-primary sm:text-sm lg:text-lg'>{cartItems?.length}</sup></label>
 
 
         {
-            !user ? <Link className='px-5 ' to="/login">Login</Link> :
-                <Link className='px-5 ' to="/dashboard">Dashboard</Link>
+            !user ? <Link className='lg:px-5 xs:pb-2 lg:pb-0' to="/login">Login</Link> :
+                <Link className='lg:px-5 xs:pb-3' to="/dashboard">Dashboard</Link>
         }
 
         {
-            user ? <li><button onClick={() => signout()} class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2">Sign out</button></li> :
-                <li><button class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2"><Link to="/signup">Signup</Link></button></li>
+            user ? <li><button onClick={() => signout()} class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2 xs:pb-2 lg:pb-0'">Sign out</button></li> :
+                <li><button class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2  xs:pb-5 lg:pb-0'"><Link to="/signup">Signup</Link></button></li>
         }
 
 

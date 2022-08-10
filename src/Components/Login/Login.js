@@ -7,6 +7,7 @@ import auth from '../../Firebase/Firebase';
 import toast from 'react-hot-toast';
 import '../../Styles/LoginPage.css';
 import useToken from '../Hooks/useToken';
+import { signOut } from 'firebase/auth';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -21,6 +22,7 @@ const Login = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
+
     const googleSignIn = () => {
         signInWithGoogle();
     }
@@ -28,6 +30,7 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data?.email, data?.password);
     }
+
 
     const [token]=useToken(user || googleUser);
     

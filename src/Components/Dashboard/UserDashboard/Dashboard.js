@@ -3,8 +3,8 @@ import SidebarMenu from 'react-bootstrap-sidebar-menu';
 
 const Dashboard = () => {
     return (
-        <div>
-            <p>dashboardxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+        <div className='flex justify-center items-center'>
+            <p>User Dashboard</p>
         </div>
 
 

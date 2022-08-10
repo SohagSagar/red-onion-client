@@ -7,7 +7,7 @@ import PieChartForOrder from './Charts/PieChartForOrder';
 
 const AdminDashboard = () => {
     const orderCount=useChartData();
-    if(!orderCount){
+    if(!orderCount ){
         return <Loading/>
     }
     

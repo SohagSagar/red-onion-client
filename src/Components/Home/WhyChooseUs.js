@@ -18,14 +18,14 @@ const WhyChooseUs = () => {
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
             </div>
             <div className='flex justify-center text-gray-500 pb-12'>
-                <p className='text-justify max-w-lg'>Barton waited twenty always repair in within we do. An delighted offering curiosity my is dashwoods at.Boy prosperous increasing surrounded.</p>
+                <p className='text-justify max-w-lg xs:max-w-xs'>Barton waited twenty always repair in within we do. An delighted offering curiosity my is dashwoods at.Boy prosperous increasing surrounded.</p>
             </div>
 
             {/* why you choose up card */}
 
             <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center gap-5 pb-12'>
-                <div class="card w-96 bg-base-100 whyChoiceUsCard w-full">
-                    <figure><img className='rounded-lg h-96' src={image3} alt="Shoes" /></figure>
+                <div class="card w-96 xs:max-w-xs bg-base-100 whyChoiceUsCard ">
+                    <figure><img className='rounded-lg xs:h-xs h-96' src={image3} alt="Shoes" /></figure>
                     <div class="card-body">
 
                         <div className='flex justify-items-start'>
@@ -42,8 +42,8 @@ const WhyChooseUs = () => {
                     </div>
                 </div>
 
-                <div class="card w-96 bg-base-100  whyChoiceUsCard">
-                    <figure><img className='rounded-lg h-96 w-full' src={image2} alt="Shoes" /></figure>
+                <div class="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard">
+                    <figure><img className='rounded-lg h-96 xs:max-h-xs w-full' src={image2} alt="Shoes" /></figure>
                     <div class="card-body">
 
                         <div className='flex justify-items-start'>
@@ -59,8 +59,8 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
                 </div>
-                <div class="card w-96 bg-base-100  whyChoiceUsCard w-full">
-                    <figure><img className='rounded-lg h-96' src={image1} alt="Shoes" /></figure>
+                <div class="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard ">
+                    <figure><img className='rounded-lg h-96 xs:max-h-xs' src={image1} alt="Shoes" /></figure>
                     <div class="card-body">
 
                         <div className='flex justify-items-start'>
