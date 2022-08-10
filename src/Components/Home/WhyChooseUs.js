@@ -18,14 +18,14 @@ const WhyChooseUs = () => {
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
             </div>
             <div className='flex justify-center text-gray-500 pb-12'>
-                <p className='text-justify max-w-lg xs:max-w-xs'>Barton waited twenty always repair in within we do. An delighted offering curiosity my is dashwoods at.Boy prosperous increasing surrounded.</p>
+                <p className='text-justify lg:max-w-lg xs:max-w-xs'>Barton waited twenty always repair in within we do. An delighted offering curiosity my is dashwoods at.Boy prosperous increasing surrounded.</p>
             </div>
 
             {/* why you choose up card */}
 
             <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center gap-5 pb-12'>
-                <div class="card w-96 xs:max-w-xs bg-base-100 whyChoiceUsCard ">
-                    <figure><img className='rounded-lg xs:h-xs h-96' src={image3} alt="Shoes" /></figure>
+                <div class="card lg:w-96 xs:max-w-xs  bg-base-100 whyChoiceUsCard ">
+                    <figure><img className='rounded-t-lg xs:h-xs lg:h-96' src={image3} alt="Shoes" /></figure>
                     <div class="card-body">
 
                         <div className='flex justify-items-start'>

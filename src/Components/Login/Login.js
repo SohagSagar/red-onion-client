@@ -58,11 +58,11 @@ const Login = () => {
 
     return (
         <div className=''>
-            <div className='min-h-screen login-page  flex justify-center items-center'>
-                <div class="card w-96 bg-base-100 signup-card mx-auto ">
+            <div className='min-h-screen xs:min-h-12 xs:py-12 login-page  flex justify-center items-center '>
+                <div class="card w-96 xs:max-w-xs bg-base-100 signup-card mx-auto bg-transparent backdrop-blur-sm">
                     <div class="card-body">
                         <div class="card-actions justify-center">
-                            <img className='w-44' src={logo} alt="" srcset="" />
+                            <img className='lg:w-44 xs:w-36' src={logo} alt="" srcset="" />
 
                             <div>
                                 <form autoComplete='disabled' onSubmit={handleSubmit(onSubmit)} className='w-[300px] mx-auto  mb-5 gap-y-2'>
