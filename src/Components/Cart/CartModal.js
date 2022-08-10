@@ -6,7 +6,7 @@ const CartModal = ({ cartItems,setCartModalStatus }) => {
     return (
         <div>
             <input type="checkbox" id="cartModal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal modal-bottom sm:modal-middle xs:modal-middle">
                 <div class="modal-box">
                     <h3 class="font-bold text-lg text-center mb-3">Added Items</h3><hr />
                     {

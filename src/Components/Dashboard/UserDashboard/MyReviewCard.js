@@ -50,7 +50,7 @@ const MyReviewCard = ({ review, refetch }) => {
     }
 
     return (
-        <div class=" w-96 bg-base-100 border-2 border-primary rounded-xl mt-20 mx-auto">
+        <div class=" lg:w-96 xs:w-80 bg-base-100 border-2 border-primary rounded-xl mt-20 mx-auto">
             <div class="card-body pb-2  h-60">
                 <div class="avatar mx-auto mt-[-80px] z-100  ">
                     <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

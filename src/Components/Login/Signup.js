@@ -57,7 +57,7 @@ const Signup = () => {
 
 
     return (
-        <div className='min-h-screen login-page py-12 xs:min-h-12 xs:py-12'>
+        <div className='min-h-screen login-page py-12 xs:min-h-12 xs:py-12 '>
 
             <div class="card w-96 xs:max-w-xs bg-base-100 signup-card mx-auto bg-transparent backdrop-blur-sm">
                 <div class="card-body">

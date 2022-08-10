@@ -76,7 +76,7 @@ const MyOrders = () => {
 
             {
                 products?.lenght < 1 ? <p className='text-center text-lg my-12'>No product to review</p> :
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto ">
                         <table className="table table-compact lg:w-[1000px] font-semibold">
 
                             <thead>

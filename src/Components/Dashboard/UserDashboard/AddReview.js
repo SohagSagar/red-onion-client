@@ -61,7 +61,7 @@ const AddReview = () => {
 
     }
     return (
-        <div class="rounded-md w-96 mx-auto bg-base-100 shadow-md mt-2">
+        <div class="rounded-md lg:w-96 xs:w-80  mx-auto bg-base-100 shadow-md mt-2 ">
             <div class="card-body">
                 <h2 class="text-xl font-semibold text-center ">Add Review</h2><hr />
 

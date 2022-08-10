@@ -55,7 +55,7 @@ function App() {
 
 
   return (
-    <div className="text-accent xs:overflow-x-hidden">
+    <div className="text-accent ">
 
       <Navbar cartItems={cartItems} setCardItems={setCardItems} />
 

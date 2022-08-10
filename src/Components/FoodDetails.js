@@ -63,17 +63,17 @@ const FoodDetails = ({ cartItems, setCardItems }) => {
 
     return (
 
-        <div className='lg:px-12 food-details-container'>
+        <div className='lg:px-12 food-details-container xs:pb-5'>
             <div className="left-container">
-                <h2>{name}</h2>
+                <h2 className=''>{name}</h2>
                 <p>{description}.</p>
 
                 <div className="price flex items-center mt-5">
-                    <h3 className='text-2xl font-semibold'><span><TbCurrencyDollar className='inline-block mb-1 mr-[-4px]' /></span>{foodPrice}</h3>
-                    <p className='btn btn-white quantity-btn w-28 rounded-full ml-5 text-xl border-primary'><span onClick={minus} className='mr-3 text-3xl text-primary'>-</span>{foodQuantity}<span onClick={plus} className='ml-3 text-3xl text-primary'>+</span></p>
+                    <h3 className='lg:text-2xl xs:text-xl font-semibold'><span><TbCurrencyDollar className='inline-block mb-1 mr-[-4px]' /></span>{foodPrice}</h3>
+                    <p className='btn lg:btn-md xs:btn-sm btn-white quantity-btn w-28  rounded-full ml-5 text-xl border-primary'><span onClick={minus} className='mr-3 xs:text-lg lg:text-3xl text-primary'>-</span>{foodQuantity}<span onClick={plus} className='ml-3 xs:text-lg lg:text-3xl text-primary'>+</span></p>
                 </div>
 
-                <button onClick={() => handleAddToCart(targetFood)} className='btn btn-primary rounded-full mt-8 w-36 text-xl'><span><BsCart className='mr-2' /></span>Add</button>
+                <button onClick={() => handleAddToCart(targetFood)} className='btn xs:btn-sm lg:btn-lg btn-primary rounded-full lg:mt-8 xs:mt-4 lg:w-36 xs:w-44 lg:text-xl xs:text-sm'><span><BsCart className='mr-2' /></span>Add</button>
             </div>
 
             <div className="right-container">
