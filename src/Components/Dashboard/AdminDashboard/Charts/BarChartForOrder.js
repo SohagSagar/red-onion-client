@@ -1,14 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
 
-const data = [
-    { name: 'Total Order', value: 40 },
-    { name: 'Processing', value: 30 },
-    { name: 'Shipped', value: 15 },
-    { name: 'Cancel', value: 5 }
-];
 
-const BarChartForOrder = () => {
+
+const BarChartForOrder = ({ orderCount }) => {
+
+    const { allOrderCount, allProcessingCount, allShippedCount, allCancelCount } = orderCount;
+
+    const data = [
+        { name: 'Total Order', value:  allOrderCount},
+        { name: 'Processing', value: allProcessingCount },
+        { name: 'Shipped', value:allShippedCount },
+        { name: 'Cancel', value: allCancelCount }
+    ];
+
     return (
         <div className='border-2 rounded-2xl p-5'>
             <p className='chart-heading text-center mb-5 font-bold text-gray-500'>Order History</p>
