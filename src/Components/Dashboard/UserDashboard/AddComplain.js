@@ -2,9 +2,8 @@ import React from 'react';
 
 const AddComplain = () => {
     return (
-        <div>
-            Add complains
-            
+        <div  className='mx-auto my-auto'>
+            <p className='text-xl font-bold'>Add Complains</p>
         </div>
     );
 };

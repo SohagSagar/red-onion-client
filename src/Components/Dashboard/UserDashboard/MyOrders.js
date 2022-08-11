@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
@@ -13,9 +13,9 @@ import { signOut } from 'firebase/auth';
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
-
     const email = user?.email;
-    const { data: products, isLoading, refetch } = useQuery(['products', user], () => fetch(`http://localhost:5000/my-order/${email}`, {
+    const [orderStatus,setOrderStatus]=useState('all-orders');
+    const { data: products, isLoading, refetch } = useQuery(['products', user,orderStatus], () => fetch(`http://localhost:5000/my-order/${email}?status=${orderStatus}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -77,6 +77,17 @@ const MyOrders = () => {
             {
                 products?.lenght < 1 ? <p className='text-center text-lg my-12'>No product to review</p> :
                     <div className="overflow-x-auto ">
+                        <div className='flex justify-start'>
+                            < div className='flex items-center gap-2'>
+                                <p className='text-md font-semibold'>Filter: </p>
+                                <select onChange={(e)=>setOrderStatus(e.target.value)} class="select select-bordered select-sm w-full max-w-xs onFo">
+                                    <option value={'all-orders'}>All</option>
+                                    <option value={'Processing'} >Processing</option>
+                                    <option value={'Shipped'}>Shipped</option>
+                                    <option value={'Canceled'}>Canceled</option>
+                                </select>
+                            </div>
+                        </div>
                         <table className="table table-compact lg:w-[1000px] font-semibold">
 
                             <thead>

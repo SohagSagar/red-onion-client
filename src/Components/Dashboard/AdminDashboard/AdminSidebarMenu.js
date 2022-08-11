@@ -64,7 +64,7 @@ const AdminSidebarMenu = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-start justify-start mt-3 ml-4">
 
-                    <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden"><GiHamburgerMenu /></label>
+                    <label for="my-drawer-2" className="btn xs:btn-sm btn-primary drawer-button lg:hidden"><GiHamburgerMenu className='mr-2'/>Dashboard</label>
                     <Outlet />
 
                 </div>

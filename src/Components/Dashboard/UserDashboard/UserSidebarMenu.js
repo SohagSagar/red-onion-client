@@ -54,7 +54,7 @@ const UserSidebarMenu = () => {
     const dummyImage='https://i.ibb.co/64Jfd5g/dummy-user.png'
 
     return (
-        <div>
+        <div className=''>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-start justify-start mt-3 lg:ml-4 xs:ml-5">

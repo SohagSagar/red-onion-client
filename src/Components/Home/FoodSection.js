@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import FoodCard from './FoodCard';
 
-const FoodSection = () => {
+const FoodSection = ({searchText}) => {
     const [category, setCategory] = useState('Breakfast');
     const [activeBtn, setActiveBtn] = useState('breakfast');
 
@@ -36,7 +36,16 @@ const FoodSection = () => {
                 isLoading ? <Loading /> :
                     <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center'>
                         {
-                            foods?.map(food => <FoodCard
+                            foods?.filter((val) => {
+                                if (!searchText) {
+                                    return val;
+                                } else if (
+                                    val.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                                    val.price.toLowerCase().includes(searchText.toLowerCase())
+                                ) {
+                                    return val;
+                                }
+                            })?.map(food => <FoodCard
                                 key={food._id}
                                 food={food}
                             ></FoodCard>)

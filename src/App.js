@@ -1,44 +1,59 @@
-import FoodSection from "./Components/Home/FoodSection";
-import Home from "./Components/Home/Home";
-import WhyChooseUs from "./Components/Home/WhyChooseUs";
-import Footer from "./Components/SharedComponents/Footer";
-import Navbar from "./Components/SharedComponents/Navbar";
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "./Components/Login/Login";
-import Signup from "./Components/Login/Signup";
 import { Toaster } from 'react-hot-toast';
-import Dashboard from "./Components/Dashboard/UserDashboard/Dashboard";
-import FoodDetails from "./Components/FoodDetails";
-import UserSidebarMenu from "./Components/Dashboard/UserDashboard/UserSidebarMenu";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./Firebase/Firebase";
-import MyOrders from "./Components/Dashboard/UserDashboard/MyOrders";
-import AddReview from "./Components/Dashboard/UserDashboard/AddReview";
-import MyReviews from "./Components/Dashboard/UserDashboard/MyReviews";
-import AddComplain from "./Components/Dashboard/UserDashboard/AddComplain";
-import UpdatePassword from "./Components/Dashboard/UserDashboard/UpdatePassword";
-import AdminSidebarMenu from "./Components/Dashboard/AdminDashboard/AdminSidebarMenu";
-import AdminDashboard from "./Components/Dashboard/AdminDashboard/AdminDashboard";
-import AllOrders from "./Components/Dashboard/AdminDashboard/AllOrders";
-import AddFoods from "./Components/Dashboard/AdminDashboard/AddFoods";
-import UserReviews from "./Components/Dashboard/AdminDashboard/UserReviews";
-import UserComplains from "./Components/Dashboard/AdminDashboard/UserComplains";
-import AllFoods from "./Components/Dashboard/AdminDashboard/AllFoods";
 import { useState } from "react";
-import Checkout from "./Components/Checkout/Checkout";
 import RequireAuth from "./Components/SharedComponents/RequireAuth";
-import MyOrderDetails from "./Components/Dashboard/UserDashboard/MyOrderDetails";
-import Testimonials from "./Components/Home/Testimonials";
 import { useQuery } from "react-query";
-import GetAllUser from "./Components/Dashboard/AdminDashboard/GetAllUser";
 import Page404 from "./Components/SharedComponents/Page404";
 import Loading from "./Components/SharedComponents/Loading";
+
+
+// home page components
+const Home = lazy(() => import("./Components/Home/Home"));
+const FoodSection = lazy(() => import("./Components/Home/FoodSection"));
+const FoodDetails = lazy(() => import("./Components/FoodDetails"));
+const Checkout = lazy(() => import("./Components/Checkout/Checkout"));
+const WhyChooseUs = lazy(() => import("./Components/Home/WhyChooseUs"));
+const Testimonials = lazy(() => import("./Components/Home/Testimonials"));
+
+
+//login/registration components
+const Login = lazy(() => import("./Components/Login/Login"));
+const Signup = lazy(() => import("./Components/Login/Signup"));
+
+//admin dashboard components
+const AdminSidebarMenu = lazy(() => import("./Components/Dashboard/AdminDashboard/AdminSidebarMenu"));
+const AdminDashboard = lazy(() => import("./Components/Dashboard/AdminDashboard/AdminDashboard"));
+const AllOrders = lazy(() => import("./Components/Dashboard/AdminDashboard/AllOrders"));
+const GetAllUser = lazy(() => import("./Components/Dashboard/AdminDashboard/GetAllUser"));
+const AddFoods = lazy(() => import("./Components/Dashboard/AdminDashboard/AddFoods"));
+const AllFoods = lazy(() => import("./Components/Dashboard/AdminDashboard/AllFoods"));
+const UserReviews = lazy(() => import("./Components/Dashboard/AdminDashboard/UserReviews"));
+const UserComplains = lazy(() => import("./Components/Dashboard/AdminDashboard/UserComplains"));
+
+
+//user dashboard components
+const UserSidebarMenu = lazy(() => import("./Components/Dashboard/UserDashboard/UserSidebarMenu"));
+const Dashboard = lazy(() => import("./Components/Dashboard/UserDashboard/Dashboard"));
+const MyOrders = lazy(() => import("./Components/Dashboard/UserDashboard/MyOrders"));
+const MyOrderDetails = lazy(() => import("./Components/Dashboard/UserDashboard/MyOrderDetails"));
+const AddReview = lazy(() => import("./Components/Dashboard/UserDashboard/AddReview"));
+const MyReviews = lazy(() => import("./Components/Dashboard/UserDashboard/MyReviews"));
+const AddComplain = lazy(() => import("./Components/Dashboard/UserDashboard/AddComplain"));
+
+//shared components
+const Navbar = lazy(() => import("./Components/SharedComponents/Navbar"));
+const Footer = lazy(() => import("./Components/SharedComponents/Footer"));
+const UpdatePassword = lazy(() => import("./Components/Dashboard/UserDashboard/UpdatePassword"));
 
 
 
 function App() {
   const [user] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
   const { data: superAdmin, isLoading } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
     headers: {
@@ -50,8 +65,6 @@ function App() {
     return res.json()
   }))
 
-  // if(isLoading){return <Loading />}
-  
 
 
   return (
@@ -60,58 +73,63 @@ function App() {
       <Navbar cartItems={cartItems} setCardItems={setCardItems} />
 
       {/* //public routes */}
-      <Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
 
-        <Route path={"/"} element={
-          <>
-            <Home />
-            <FoodSection />
-            <WhyChooseUs />
-            <Testimonials />
-          </>
-        } />
+          <Route path={"/"} element={
+            <>
+              <Suspense fallback={<Loading />}>
+                <Home setSearchText={setSearchText} />
+                <FoodSection searchText={searchText} />
+                <WhyChooseUs />
+                <Testimonials />
+              </Suspense>
+            </>
+          } />
 
-        <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} />}></Route>
 
-         
-        
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
 
-        {/* //Protected routes */}
-        <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} /></RequireAuth>}></Route>
-        {
-          verifySuperAdmin ?
+          {/* //Protected routes */}
+          <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} /></RequireAuth>}></Route>
+          {
+            verifySuperAdmin ?
 
-            <Route path="/dashboard" element={<RequireAuth><AdminSidebarMenu /></RequireAuth>} >
-              <Route index element={<AdminDashboard  />} />
-              <Route path="/dashboard/all-orders" element={<AllOrders />} />
-              <Route path="/dashboard/all-users" element={<GetAllUser />} />
-              <Route path="/dashboard/add-foods" element={<AddFoods />} />
-              <Route path="/dashboard/all-foods" element={<AllFoods />} />
-              <Route path="/dashboard/user-reviews" element={<UserReviews />} />
-              <Route path="/dashboard/user-complains" element={<UserComplains />} />
-              <Route path="/dashboard/update-password" element={<UpdatePassword />} />
-            </Route>
+              <Route path="/dashboard" element={<RequireAuth><AdminSidebarMenu /></RequireAuth>} >
+                <Route index element={<AdminDashboard />} />
+                <Route path="/dashboard/all-orders" element={<AllOrders />} />
+                <Route path="/dashboard/all-users" element={<GetAllUser />} />
+                <Route path="/dashboard/add-foods" element={<AddFoods />} />
+                <Route path="/dashboard/all-foods" element={<AllFoods />} />
+                <Route path="/dashboard/user-reviews" element={<UserReviews />} />
+                <Route path="/dashboard/user-complains" element={<UserComplains />} />
+                <Route path="/dashboard/update-password" element={<UpdatePassword />} />
+              </Route>
 
-            : user &&
+              : user &&
 
-            <Route path="/dashboard" element={<RequireAuth><UserSidebarMenu /></RequireAuth>}>
-              <Route index element={<Dashboard />} />
-              <Route path="/dashboard/my-orders" element={<MyOrders />} />
-              <Route path="/dashboard/my-order-details/:id" element={<MyOrderDetails />} />
-              <Route path="/dashboard/add-review" element={<AddReview />} />
-              <Route path="/dashboard/my-review" element={<MyReviews />} />
-              <Route path="/dashboard/add-complain" element={<AddComplain />} />
-              <Route path="/dashboard/update-password" element={<UpdatePassword />} />
-            </Route>
+              <Route path="/dashboard" element={<RequireAuth><UserSidebarMenu /></RequireAuth>}>
+                <Route index element={<Dashboard />} />
+                <Route path="/dashboard/my-orders" element={<MyOrders />} />
+                <Route path="/dashboard/my-order-details/:id" element={<MyOrderDetails />} />
+                <Route path="/dashboard/add-review" element={<AddReview />} />
+                <Route path="/dashboard/my-review" element={<MyReviews />} />
+                <Route path="/dashboard/add-complain" element={<AddComplain />} />
+                <Route path="/dashboard/update-password" element={<UpdatePassword />} />
+              </Route>
 
-        }
-        <Route path="*" element={<Page404 />} />
+          }
+          <Route path="*" element={<Page404 />} />
 
-      </Routes>
+        </Routes>
+      </Suspense>
 
-      <Footer />
+      <Suspense fallback={<Loading />}>
+        <Footer />
+      </Suspense>
+      
       <Toaster />
     </div >
   );

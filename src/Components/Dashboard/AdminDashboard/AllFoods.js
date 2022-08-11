@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{ useState }  from 'react';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import swal from 'sweetalert';
