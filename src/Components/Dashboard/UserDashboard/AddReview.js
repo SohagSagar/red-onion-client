@@ -13,10 +13,7 @@ const AddReview = () => {
     const [dataLoading, setDataLoading] = useState(false);
     const dateTime = new Date().toLocaleString();
     const navigate = useNavigate()
-
     const requiredMessage = 'field is required';
-    // const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
-    // const result=capitalize(requiredMessage);
 
     //handle form data to sent to the database
     const onSubmit = data => {
@@ -61,15 +58,15 @@ const AddReview = () => {
 
     }
     return (
-        <div class="rounded-md lg:w-96 xs:w-80  mx-auto bg-base-100 shadow-md mt-2 ">
-            <div class="card-body">
-                <h2 class="text-xl font-semibold text-center ">Add Review</h2><hr />
+        <div className="rounded-md lg:w-96 xs:w-80  mx-auto bg-base-100 shadow-md mt-2 ">
+            <div className="card-body">
+                <h2 className="text-xl font-semibold text-center ">Add Review</h2><hr />
 
                 <form onSubmit={handleSubmit(onSubmit)} >
 
                     {/* profession  name */}
-                    <label class="label  pb-0">
-                        <span class="label-text">Profession Name</span>
+                    <label className="label  pb-0">
+                        <span className="label-text">Profession Name</span>
                     </label>
                     <input {...register('profession', {
                         required: {
@@ -80,23 +77,23 @@ const AddReview = () => {
                             value: /^[a-zA-Z\s]*$/g,
                             message: 'Only text is allowed'
                         }
-                    })} type="text" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
-                    <label class="label py-0">
+                    })} type="text" placeholder="Type here" className="input input-bordered input-sm w-full max-w-xs" />
+                    <label className="label py-0">
                         {
-                            errors?.profession && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.profession.message}</span>
+                            errors?.profession && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.profession.message}</span>
                         }
                     </label>
 
                     {/* ratings  */}
-                    <label class="label  pb-0">
-                        <span class="label-text">Ratings</span>
+                    <label className="label  pb-0">
+                        <span className="label-text">Ratings</span>
                     </label>
                     <select {...register('rating', {
                         required: {
                             value: true,
                             message: 'No rating is selected'
                         }
-                    })} class="select select-bordered select-sm w-full max-w-xs ">
+                    })} className="select select-bordered select-sm w-full max-w-xs ">
                         <option hidden></option>
                         <option value={'1'}>1</option>
                         <option value={'2'}>2</option>
@@ -104,36 +101,36 @@ const AddReview = () => {
                         <option value={'4'}>4</option>
                         <option value={'5'}>5</option>
                     </select>
-                    <label class="label pt-0">
+                    <label className="label pt-0">
                         {
-                            errors.rating && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.rating.message}</span>
+                            errors.rating && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.rating.message}</span>
                         }
 
                     </label>
 
 
                     {/* your reviews  */}
-                    <div class="form-control">
-                        <label class="label pb-0">
-                            <span class="label-text">Review</span>
+                    <div className="form-control">
+                        <label className="label pb-0">
+                            <span className="label-text">Review</span>
                         </label>
                         <textarea {...register('review', {
                             required: {
                                 value: true,
                                 message: requiredMessage
                             }
-                        })} class="textarea textarea-bordered h-24" placeholder="Write Your Review..."></textarea>
+                        })} className="textarea textarea-bordered h-24" placeholder="Write Your Review..."></textarea>
                     </div>
 
-                    <label class="label pt-0">
+                    <label className="label pt-0">
                         {
-                            errors?.review && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.review.message}</span>
+                            errors?.review && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.review.message}</span>
                         }
                     </label>
 
 
-                    <div class="card-actions justify-center  mt-5">
-                        <button disabled={userLoading} type='submit' class={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Submit Review'}</button>
+                    <div className="card-actions justify-center  mt-5">
+                        <button disabled={userLoading} type='submit' className={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Submit Review'}</button>
                     </div>
 
                 </form>

@@ -1,5 +1,5 @@
 import React from 'react';
-import chart from '../../../../Styles/Chart.css';
+import '../../../../Styles/Chart.css';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 
@@ -14,8 +14,7 @@ const BarChartForOrder = ({ orderCount }) => {
         { name: 'Shipped', value:allShippedCount },
         { name: 'Cancel', value: allCancelCount }
     ];
-    var viewportwidth = window.innerWidth;
-    console.log(viewportwidth);
+
 
     return (
         <div  style={{paddingBottom:40, width:450, height: 300}} className='border-2 rounded-2xl p-5 chart-container '>

@@ -77,7 +77,7 @@ const FoodDetails = ({ cartItems, setCardItems }) => {
             </div>
 
             <div className="right-container">
-                <img className='pb-5' src={imageURL} alt="" srcset="" />
+                <img className='pb-5' src={imageURL} alt="" srcSet="" />
             </div>
         </div>
 

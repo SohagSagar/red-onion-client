@@ -7,7 +7,7 @@ import auth from '../../Firebase/Firebase';
 import toast from 'react-hot-toast';
 import '../../Styles/LoginPage.css';
 import useToken from '../Hooks/useToken';
-import { signOut } from 'firebase/auth';
+
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -59,17 +59,17 @@ const Login = () => {
     return (
         <div className=''>
             <div className='min-h-screen xs:min-h-12 xs:py-12 login-page  flex justify-center items-center '>
-                <div class="card w-96 xs:max-w-xs bg-base-100 signup-card mx-auto bg-transparent backdrop-blur-sm">
-                    <div class="card-body">
-                        <div class="card-actions justify-center">
-                            <img className='lg:w-44 xs:w-36' src={logo} alt="" srcset="" />
+                <div className="card w-96 xs:max-w-xs bg-base-100 signup-card mx-auto bg-transparent backdrop-blur-sm">
+                    <div className="card-body">
+                        <div className="card-actions justify-center">
+                            <img className='lg:w-44 xs:w-36' src={logo} alt="" srcSet="" />
 
                             <div>
                                 <form autoComplete='disabled' onSubmit={handleSubmit(onSubmit)} className='w-[300px] mx-auto  mb-5 gap-y-2'>
 
                                     {/* customer email */}
-                                    <label class="label">
-                                        <span class="label-text">Email</span>
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
 
                                     </label>
                                     <input {...register('email', {
@@ -81,24 +81,24 @@ const Login = () => {
                                             value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
                                             message: "Invalid Email"
                                         }
-                                    })} type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
+                                    })} type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs " />
                                     {
                                         errors?.email &&
                                         <>
                                             {
-                                                errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>
+                                                errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>
 
                                             }
                                             {
-                                                errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>
+                                                errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>
                                             }
                                         </>
                                     }
 
 
                                     {/* customer password */}
-                                    <label class="label">
-                                        <span class="label-text">Password</span>
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
 
                                     </label>
                                     <input {...register('password', {
@@ -110,26 +110,26 @@ const Login = () => {
                                             value: 6,
                                             message: "Minimum length should 6"
                                         }
-                                    })} type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs " />
+                                    })} type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs " />
                                     {
                                         errors?.password &&
                                         <>
                                             {
-                                                errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>
+                                                errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>
 
                                             }
                                             {
-                                                errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>
+                                                errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>
                                             }
                                         </>
                                     }
 
-                                    <button disabled={googleLoading} type='submit' class={`btn btn-primary w-full mt-4 normal-case ${loading && 'loading'}`}>Login</button>
+                                    <button disabled={googleLoading} type='submit' className={`btn btn-primary w-full mt-4 normal-case ${loading && 'loading'}`}>Login</button>
                                     <p className='text-primary mt-2 text-center'>New to Red Onion? <Link className="font-semibold" to={'/signup'}>Register Now</Link> </p>
                                 </form>
 
-                                <div class="divider">Or</div>
-                                <button disabled={googleLoading || loading} onClick={() => googleSignIn()} type='submit' class="btn btn-primary w-full mt-1 normal-case">Continue With Google</button>
+                                <div className="divider">Or</div>
+                                <button disabled={googleLoading || loading} onClick={() => googleSignIn()} type='submit' className="btn btn-primary w-full mt-1 normal-case">Continue With Google</button>
                             </div>
                         </div>
 

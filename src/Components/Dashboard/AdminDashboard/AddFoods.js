@@ -14,12 +14,7 @@ const AddFoods = () => {
     const [loading, setLoading] = useState(false);
     const [dataLoading,setDataLoading]=useState(false);
     const navigate = useNavigate()
-
-
     const requiredMessage = 'field is required';
-    // const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
-    // const result=capitalize(requiredMessage);
-
 
     //upload images to imagebb server
     const handleUploadImage = (event) => {
@@ -76,15 +71,15 @@ const AddFoods = () => {
 
     }
     return (
-        <div class="rounded-md lg:w-96 xs:w-80 mx-auto bg-base-100 shadow-md mt-2">
-            <div class="card-body">
-                <h2 class="text-xl font-semibold text-center ">Add Foods</h2><hr />
+        <div className="rounded-md lg:w-96 xs:w-80 mx-auto bg-base-100 shadow-md mt-2">
+            <div className="card-body">
+                <h2 className="text-xl font-semibold text-center ">Add Foods</h2><hr />
 
                 <form onSubmit={handleSubmit(onSubmit)} >
 
                     {/* foods name */}
-                    <label class="label  pb-0">
-                        <span class="label-text">Food Name</span>
+                    <label className="label  pb-0">
+                        <span className="label-text">Food Name</span>
                     </label>
                     <input {...register('name', {
                         required: {
@@ -95,38 +90,38 @@ const AddFoods = () => {
                             value: /^[a-zA-Z\s]*$/g,
                             message: 'Only text is allowed'
                         }
-                    })} type="text" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
-                    <label class="label py-0">
+                    })} type="text" placeholder="Type here" className="input input-bordered input-sm w-full max-w-xs" />
+                    <label className="label py-0">
                         {
-                            errors?.name && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.name.message}</span>
+                            errors?.name && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.name.message}</span>
                         }
                     </label>
 
                     {/* foods category */}
-                    <label class="label  pb-0">
-                        <span class="label-text">Category</span>
+                    <label className="label  pb-0">
+                        <span className="label-text">Category</span>
                     </label>
                     <select {...register('category', {
                         required: {
                             value: true,
                             message: 'No category is selected'
                         }
-                    })} class="select select-bordered select-sm w-full max-w-xs ">
+                    })} className="select select-bordered select-sm w-full max-w-xs ">
                         <option hidden></option>
                         <option value={'Breakfast'}>Breakfast</option>
                         <option value={'Lunch'}>Lunch</option>
                         <option value={'Dinner'}>Dinner</option>
                     </select>
-                    <label class="label pt-0">
+                    <label className="label pt-0">
                         {
-                            errors.category && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.category.message}</span>
+                            errors.category && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.category.message}</span>
                         }
 
                     </label>
 
                     {/* foods price */}
-                    <label class="label  pb-0">
-                        <span class="label-text">Price ($)</span>
+                    <label className="label  pb-0">
+                        <span className="label-text">Price ($)</span>
                     </label>
                     <input {...register('price', {
                         required: {
@@ -138,47 +133,47 @@ const AddFoods = () => {
                             message: 'Expected positive integer'
                         }
 
-                    })} type="text" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
+                    })} type="text" placeholder="Type here" className="input input-bordered input-sm w-full max-w-xs" />
 
-                    <label class="label pt-0">
+                    <label className="label pt-0">
                         {
-                            errors?.price && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.price.message}</span>
+                            errors?.price && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.price.message}</span>
                         }
                     </label>
 
                     {/* foods descriptions */}
 
-                    <div class="form-control">
-                        <label class="label pb-0">
-                            <span class="label-text">Description</span>
+                    <div className="form-control">
+                        <label className="label pb-0">
+                            <span className="label-text">Description</span>
                         </label>
                         <textarea {...register('description', {
                             required: {
                                 value: true,
                                 message: requiredMessage
                             }
-                        })} class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                        })} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
                     </div>
 
-                    <label class="label pt-0">
+                    <label className="label pt-0">
                         {
-                            errors?.description && <span class="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.description.message}</span>
+                            errors?.description && <span className="label-text-alt text-rose-500"><MdError className='inline mb-1' />{errors.description.message}</span>
                         }
                     </label>
 
 
                     {/* foods image */}
 
-                    <label htmlFor='image' class={`btn btn-sm btn-success rounded-full w-full text-white pb-0 normal-case ${loading && 'loading'}`}>
+                    <label htmlFor='image' className={`btn btn-sm btn-success rounded-full w-full text-white pb-0 normal-case ${loading && 'loading'}`}>
                         {imageURL ? <TiTick className='text-xl mr-1' /> : <BiCloudUpload className='text-xl mr-1' />}
                         {imageURL ? 'Image Uploaded' : <>{loading ? 'Uploading ...' : 'Upload Image'}</>}
                     </label>
 
-                    <input hidden id='image' onChange={handleUploadImage} type="file" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
+                    <input hidden id='image' onChange={handleUploadImage} type="file" placeholder="Type here" className="input input-bordered input-sm w-full max-w-xs" />
 
 
-                    <div class="card-actions justify-center  mt-5">
-                        <button disabled={!imageURL} type='submit' class={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Add Food'}</button>
+                    <div className="card-actions justify-center  mt-5">
+                        <button disabled={!imageURL} type='submit' className={`btn btn-primary rounded-full w-full normal-case font-semibold ${dataLoading && 'loading'}`}>{!dataLoading && 'Add Food'}</button>
                     </div>
 
                 </form>

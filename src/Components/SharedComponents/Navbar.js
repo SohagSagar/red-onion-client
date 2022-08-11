@@ -75,7 +75,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
             user && <li className='px-10 text-accent italic lg:block xs:hidden'> Welcome {user?.displayName} </li>
         }
 
-        <label onClick={()=>setCartModalStatus(true)} for="cartModal" className=' text-accent cursor-pointer xs:py-2 lg:py-0'> Cart <sup className='p-1 text-primary sm:text-sm lg:text-lg'>{cartItems?.length}</sup></label>
+        <label onClick={()=>setCartModalStatus(true)} htmlFor="cartModal" className=' text-accent cursor-pointer xs:py-2 lg:py-0'> Cart <sup className='p-1 text-primary sm:text-sm lg:text-lg'>{cartItems?.length}</sup></label>
 
 
         {
@@ -84,28 +84,28 @@ const Navbar = ({ cartItems, setCardItems }) => {
         }
 
         {
-            user ? <li><button onClick={() => signout()} class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2 xs:pb-2 lg:pb-0'">Sign out</button></li> :
-                <li><button class="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2  xs:pb-5 lg:pb-0'"><Link to="/signup">Signup</Link></button></li>
+            user ? <li><button onClick={() => signout()} className="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2 xs:pb-2 lg:pb-0'">Sign out</button></li> :
+                <li><button className="btn btn-sm text-secondary rounded-full bg-primary border-0 normal-case px-7 pt-2  xs:pb-5 lg:pb-0'"><Link to="/signup">Signup</Link></button></li>
         }
 
 
     </>
     return (
-        <div class="lg:px-12 navbar font-semibold bg-transparent">
-            <div class="navbar-start flex items-center">
-                <div class="dropdown">
-                    <label tabindex="0" class="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        <div className="lg:px-12 navbar font-semibold bg-transparent">
+            <div className="navbar-start flex items-center">
+                <div className="dropdown">
+                    <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
                         {menu}
                     </ul>
                 </div>
 
-                <Link to={'/'} class="btn btn-ghost normal-case text-xl"><img className='w-36' src={logo} alt="" srcset="" /></Link>
+                <Link to={'/'} className="btn btn-ghost normal-case text-xl"><img className='w-36' src={logo} alt="" srcSet="" /></Link>
             </div>
-            <div class="navbar-end hidden lg:flex">
-                <ul class="menu menu-horizontal pl-4">
+            <div className="navbar-end hidden lg:flex">
+                <ul className="menu menu-horizontal pl-4">
                     {menu}
                 </ul>
             </div>

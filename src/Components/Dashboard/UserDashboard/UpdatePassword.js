@@ -19,13 +19,13 @@ const UpdatePassword = () => {
         }
     }
     return (
-        <div class="card lg:w-96 xs:w-80 bg-base-100 border mx-auto mt-10">
-            <div class="card-body">
-                <h2 class="text-xl font-semibold text-center ">Reset Password</h2>
+        <div className="card lg:w-96 xs:w-80 bg-base-100 border mx-auto mt-10">
+            <div className="card-body">
+                <h2 className="text-xl font-semibold text-center ">Reset Password</h2>
                 <div className='p-2 bg-slate-200 rounded-xl'>
                   <p className='text-center font-semibold '>{user?.email}</p>
                 </div>
-                <button disabled={sending || loading} onClick={() => handleResetPassword()} class="btn btn-sm rounded-full btn-primary mt-2 normal-case">Sent Reset Password Link</button>
+                <button disabled={sending || loading} onClick={() => handleResetPassword()} className="btn btn-sm rounded-full btn-primary mt-2 normal-case">Sent Reset Password Link</button>
 
             </div>
         </div>

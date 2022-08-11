@@ -20,32 +20,7 @@ const Testimonials = () => {
         slidesToShow: 1,
         pauseOnHover: false,
         slidesToScroll: 1
-        // responsive: [
-        //     {
-        //         breakpoint: 1200,
-        //         settings: {
-        //             slidesToShow: 3,
-        //             slidesToScroll: 3,
-        //             infinite: true,
-        //             dots: true
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 1000,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 2,
-        //             initialSlide: 2
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 600,
-        //         settings: {
-        //             slidesToShow: 1,
-        //             slidesToScroll: 1
-        //         }
-        //     }
-        // ]
+        
     };
 
     const [reviews, setReviews] = useState([])
@@ -70,9 +45,8 @@ const Testimonials = () => {
                 }
                 {
                     reviews?.map(review =>
-                        <div>
+                        <div key={review._id}>
                             <TestimonialCard
-                                key={review._id}
                                 review={review}
                             />
                         </div>

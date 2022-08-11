@@ -6,12 +6,12 @@ import '../../Styles/Home.css'
 const Home = ({setSearchText}) => {
     return (
         <div>
-            <div class="hero xs:pt-10 xs:h-80 lg:min-h-screen homeBanner ">
-                <div class="hero-content text-center">
-                    <div class="max-w-md mt-[-100px]">
-                        <h1 class="lg:text-3xl xs:text-lg font-semibold whitespace-nowrap mb-10 xs:mb-3">Best Food Waiting For Your Belly</h1>
+            <div className="hero xs:pt-10 xs:h-80 lg:min-h-screen homeBanner ">
+                <div className="hero-content text-center">
+                    <div className="max-w-md mt-[-100px]">
+                        <h1 className="lg:text-3xl xs:text-lg font-semibold whitespace-nowrap mb-10 xs:mb-3">Best Food Waiting For Your Belly</h1>
 
-                        <input onChange={(e)=>setSearchText(e.target.value)} className='rounded-lg h-10 lg:w-96 xs:w-64 pl-3 input-primary ' type="text" placeholder="Search Food Items" class="input w-full max-w-xs" />
+                        <input onChange={(e)=>setSearchText(e.target.value)} className='rounded-lg h-10 lg:w-96 xs:w-64 pl-3 input-primary ' type="text" placeholder="Search Food Items" className="input w-full max-w-xs" />
 
                     </div>
                 </div>

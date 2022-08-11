@@ -24,9 +24,9 @@ const WhyChooseUs = () => {
             {/* why you choose up card */}
 
             <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center gap-5 pb-12'>
-                <div class="card lg:w-96 xs:max-w-xs  bg-base-100 whyChoiceUsCard ">
+                <div className="card lg:w-96 xs:max-w-xs  bg-base-100 whyChoiceUsCard ">
                     <figure><img className='rounded-t-lg xs:h-xs lg:h-96' src={image3} alt="Shoes" /></figure>
-                    <div class="card-body">
+                    <div className="card-body">
 
                         <div className='flex justify-items-start'>
                             <MdOutlineDeliveryDining className='text-[100px] mt-[-35px] text-primary  mr-2' />
@@ -42,9 +42,9 @@ const WhyChooseUs = () => {
                     </div>
                 </div>
 
-                <div class="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard">
+                <div className="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard">
                     <figure><img className='rounded-lg h-96 xs:max-h-xs w-full' src={image2} alt="Shoes" /></figure>
-                    <div class="card-body">
+                    <div className="card-body">
 
                         <div className='flex justify-items-start'>
                             <FaRegBell className='text-[100px] mt-[-35px] text-primary  mr-2' />
@@ -59,9 +59,9 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
                 </div>
-                <div class="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard ">
+                <div className="card w-96 xs:max-w-xs bg-base-100  whyChoiceUsCard ">
                     <figure><img className='rounded-lg h-96 xs:max-h-xs' src={image1} alt="Shoes" /></figure>
-                    <div class="card-body">
+                    <div className="card-body">
 
                         <div className='flex justify-items-start'>
                             <TbTruckDelivery className='text-[100px] mt-[-35px] text-primary  mr-2' />

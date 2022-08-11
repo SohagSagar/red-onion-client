@@ -10,7 +10,7 @@ import MyReviewCard from './MyReviewCard';
 
 const MyReviews = () => {
     const navigate = useNavigate()
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const email = user?.email;
     const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`http://localhost:5000/user-review/${email}`,{
         headers: {

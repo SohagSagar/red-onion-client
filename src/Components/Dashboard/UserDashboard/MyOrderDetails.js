@@ -67,7 +67,7 @@ const MyOrderDetails = () => {
                                         orderItems?.items?.map(orderItem =>
                                             <tr key={orderItem._id}>
 
-                                                <td><img className='w-16 rounded-lg' src={orderItem?.imageURL} alt="" srcset="" /></td>
+                                                <td><img className='w-16 rounded-lg' src={orderItem?.imageURL} alt="" srcSet="" /></td>
                                                 <td>{orderItem.name}</td>
                                                 <td>{orderItem.quantity}</td>
                                                 <td>{orderItem.price * orderItem.quantity}</td>

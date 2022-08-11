@@ -55,7 +55,8 @@ function App() {
   const [cartItems, setCardItems] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
-  const { data: superAdmin, isLoading } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+
+  const { data } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
     headers: {
       'content-type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -63,7 +64,8 @@ function App() {
   }).then(res => {
     res.status === 200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
     return res.json()
-  }))
+  }),{enabled:!!user})
+
 
 
 
@@ -78,12 +80,12 @@ function App() {
 
           <Route path={"/"} element={
             <>
-              <Suspense fallback={<Loading />}>
-                <Home setSearchText={setSearchText} />
-                <FoodSection searchText={searchText} />
-                <WhyChooseUs />
-                <Testimonials />
-              </Suspense>
+              {/* <Suspense fallback={<Loading />}> */}
+              <Home setSearchText={setSearchText} />
+              <FoodSection searchText={searchText} />
+              <WhyChooseUs />
+              <Testimonials />
+              {/* </Suspense> */}
             </>
           } />
 
@@ -129,7 +131,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Footer />
       </Suspense>
-      
+
       <Toaster />
     </div >
   );

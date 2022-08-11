@@ -82,7 +82,7 @@ const Checkout = ({ cartItems }) => {
                                         cartItems.map(cartItem =>
                                             <tr key={cartItem._id}>
 
-                                                <td><img className='w-16 rounded-lg' src={cartItem?.imageURL} alt="" srcset="" /></td>
+                                                <td><img className='w-16 rounded-lg' src={cartItem?.imageURL} alt="" srcSet="" /></td>
                                                 <td>{cartItem?.name}</td>
                                                 <td>{cartItem.quantity}</td>
                                                 <td>{cartItem?.price * cartItem.quantity}</td>

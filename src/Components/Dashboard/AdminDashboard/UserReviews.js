@@ -71,7 +71,7 @@ const UserReviews = () => {
                         <div className='flex justify-start'>
                             < div className='flex items-center gap-2'>
                                 <p className='text-md font-semibold'>Filter: </p>
-                                <select onChange={(e) => setOrderStatus(e.target.value)} class="select select-bordered select-sm w-full max-w-xs onFo">
+                                <select onChange={(e) => setOrderStatus(e.target.value)} className="select select-bordered select-sm w-full max-w-xs onFo">
                                     <option value={'all-review'}>All</option>
                                     <option value={'Active'} >Active</option>
                                     <option value={'Inactive'}>Inactive</option>
@@ -93,7 +93,7 @@ const UserReviews = () => {
                             <tbody>
 
                                 {
-                                    isLoading ? <Loading /> :
+                                    isLoading ?  <tr><td colSpan="4"><Loading /></td></tr> :
                                         [...userReviews]?.reverse()?.map((review, index) =>
                                             <tr key={review?._id}>
                                                 <td>{index + 1}</td>
@@ -101,7 +101,7 @@ const UserReviews = () => {
                                                 <td>{review?.postOn}</td>
 
                                                 <td>
-                                                    <textarea value={review?.review} class="textarea textarea-bordered" placeholder="Bio"></textarea>
+                                                    <textarea readOnly defaultValue={review?.review} className="textarea textarea-bordered" placeholder="Bio"></textarea>
                                                 </td>
                                                 <td>
                                                     <span className={`badge  py-2 mt-2 badge-md ${review.status === 'Inactive' ? 'badge-error' : 'badge-success'} `}>

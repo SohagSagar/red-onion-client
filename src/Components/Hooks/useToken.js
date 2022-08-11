@@ -10,7 +10,7 @@ const useToken = (user) => {
         const name = user?.user?.displayName;
         const dateTime = new Date().toLocaleString();
         const currentUser = {email:email,name:name,lastLogged:dateTime}
-        console.log(user);
+
         if(email){
             fetch(`http://localhost:5000/users/${email}`,{
                 method:'PUT',
@@ -22,7 +22,6 @@ const useToken = (user) => {
             .then(res=>res.json())
             .then(data=>{
                 const accessToken= data?.token;
-                console.log(data);
                 localStorage.setItem('accessToken',accessToken)
                 setToken(accessToken);
             })

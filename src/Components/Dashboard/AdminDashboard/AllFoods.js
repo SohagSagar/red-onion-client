@@ -84,7 +84,7 @@ const AllFoods = () => {
                         <div className='flex justify-start'>
                             < div className='flex items-center gap-2'>
                                 <p className='text-md font-semibold'>Filter: </p>
-                                <select onChange={(e)=>setCategory(e.target.value)} class="select select-bordered select-sm w-full max-w-xs onFo">
+                                <select onChange={(e)=>setCategory(e.target.value)} className="select select-bordered select-sm w-full max-w-xs onFo">
                                     <option value={'all-foods'}>All</option>
                                     <option value={'Breakfast'} >Breakfast</option>
                                     <option value={'Lunch'}>Lunch</option>
@@ -107,11 +107,11 @@ const AllFoods = () => {
                             <tbody>
 
                                 {
-                                    isLoading ? <Loading /> :
+                                    isLoading ?  <tr><td colSpan="4"><Loading /></td></tr> :
                                         [...foods]?.reverse()?.map((food, index) =>
                                             <tr key={food?._id}>
                                                  <td>{index+1}</td>
-                                                <td><img className='w-16 rounded' src={food.imageURL} alt="" srcset="" />{}</td>
+                                                <td><img className='w-16 rounded' src={food.imageURL} alt="" srcSet="" />{}</td>
                                                 <td>{food?.name}</td>
                                                 <td>{food?.category}</td>
                                                 <td>{food.price}</td>

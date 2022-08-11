@@ -118,7 +118,7 @@ const AllOrders = () => {
                         <div className='flex justify-start'>
                             < div className='flex items-center gap-2'>
                                 <p className='text-md font-semibold'>Filter: </p>
-                                <select onChange={(e)=>setOrderStatus(e.target.value)} class="select select-bordered select-sm w-full max-w-xs onFo">
+                                <select onChange={(e)=>setOrderStatus(e.target.value)} className="select select-bordered select-sm w-full max-w-xs onFo">
                                     <option value={'all-orders'}>All</option>
                                     <option value={'Processing'} >Processing</option>
                                     <option value={'Shipped'}>Shipped</option>
@@ -143,7 +143,7 @@ const AllOrders = () => {
                             <tbody>
 
                                 {
-                                    isLoading ? <Loading /> :
+                                    isLoading ? <tr><td colSpan="4"><Loading /></td></tr> :
                                         [...allOrders]?.reverse()?.map((product, index) =>
                                             <tr key={product?._id}>
                                                 <td>{index + 1}</td>

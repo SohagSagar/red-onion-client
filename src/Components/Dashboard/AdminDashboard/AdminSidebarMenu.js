@@ -64,19 +64,19 @@ const AdminSidebarMenu = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-start justify-start mt-3 ml-4">
 
-                    <label for="my-drawer-2" className="btn xs:btn-sm btn-primary drawer-button lg:hidden"><GiHamburgerMenu className='mr-2'/>Dashboard</label>
+                    <label htmlFor="my-drawer-2" className="btn xs:btn-sm btn-primary drawer-button lg:hidden"><GiHamburgerMenu className='mr-2'/>Dashboard</label>
                     <Outlet />
 
                 </div>
 
                 <div className="drawer-side shadow-xl mt-5 rounded-md">
-                    <label for="my-drawer-2" className="drawer-overlay"></label>
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
                     <ul className="menu p-4 overflow-y-auto w-72 bg-base-100 text-base-content">
                         <div className='flex items-center justify-center'>
                             {/* user avatar in dashboard */}
-                            <div class="avatar online">
-                                <div class="w-16 rounded-full">
+                            <div className="avatar online">
+                                <div className="w-16 rounded-full">
                                     <img src={user?.photoURL ? user?.photoURL : dummyImage } alt='user_image'/>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const AdminSidebarMenu = () => {
                                 <h1 className='text-lg font-semibold ml-4 '>{user?.displayName}</h1>
                                 <p className='text-sm font-semibold text-gray-500'>Admin</p>
                             </div>
-                            <label for="my-drawer-2"><RiCloseLine for="my-drawer-2" className='text-2xl cursor-pointer lg:hidden' /></label>
+                            <label htmlFor="my-drawer-2"><RiCloseLine htmlFor="my-drawer-2" className='text-2xl cursor-pointer lg:hidden' /></label>
                         </div>
                         <div className="divider"></div>
 
@@ -95,7 +95,7 @@ const AdminSidebarMenu = () => {
                                         to={route.path}
                                         key={index}
                                         className="link"
-                                        activeClassName="active"
+                                        activeclassname="active"
                                     >
                                         <div className="icon">{route.icon}</div>
                                         {route.name}
