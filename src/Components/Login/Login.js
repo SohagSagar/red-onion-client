@@ -57,7 +57,11 @@ const Login = () => {
 
 
     return (
-        <div className=''>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="100"
+        data-aos-offset="0"
+         className=''>
             <div className='min-h-screen xs:min-h-12 xs:py-12 login-page  flex justify-center items-center '>
                 <div className="card w-96 xs:max-w-xs bg-base-100 signup-card mx-auto bg-transparent backdrop-blur-sm">
                     <div className="card-body">

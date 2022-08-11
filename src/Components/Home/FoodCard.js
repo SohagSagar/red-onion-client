@@ -10,7 +10,7 @@ const FoodCard = ({ food }) => {
         navegate(`/food-details/${_id}`)
     }
     return (
-        <div onClick={() => foodDetails(_id)} className="card w-80 h-[380px] bg-base-100 food-card text-center mt-10 cursor-pointer">
+        <div  onClick={() => foodDetails(_id)} className="card w-80 h-[380px] bg-base-100 food-card text-center mt-10 cursor-pointer">
             <figure><img className='w-44 mt-10' src={imageURL} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className=" font-semibold">{name}</h2>

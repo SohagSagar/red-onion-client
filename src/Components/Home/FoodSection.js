@@ -34,7 +34,7 @@ const FoodSection = ({searchText}) => {
 
             {
                 isLoading ? <Loading /> :
-                    <div className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center'>
+                    <div data-aos="fade-up" className='grid lg:grid-cols-3 sm:grid-cols-1 justify-items-center items-center'>
                         {
                             foods?.filter((val) => {
                                 if (!searchText) {
