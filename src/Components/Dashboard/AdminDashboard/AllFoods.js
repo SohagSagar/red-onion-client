@@ -10,7 +10,7 @@ import { signOut } from 'firebase/auth';
 const AllFoods = () => {
     const navigate = useNavigate()
     const [category,setCategory]=useState('all-foods');
-    const { data: foods, isLoading, refetch } = useQuery(['all-foods',category], () => fetch(`http://localhost:5000/all-foods/${category}`, {
+    const { data: foods, isLoading, refetch } = useQuery(['all-foods',category], () => fetch(`https://vast-wave-53666.herokuapp.com/all-foods/${category}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -37,7 +37,7 @@ const AllFoods = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/food-items/${id}`, {
+                    fetch(`https://vast-wave-53666.herokuapp.com/food-items/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -71,7 +71,7 @@ const AllFoods = () => {
 
     }
     return (
-        <div className='mx-auto'>
+        <div data-aos="fade-left" className='mx-auto'>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>Food Collections</p>
             </div>

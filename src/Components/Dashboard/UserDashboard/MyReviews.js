@@ -12,7 +12,7 @@ const MyReviews = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const email = user?.email;
-    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`http://localhost:5000/user-review/${email}`,{
+    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`https://vast-wave-53666.herokuapp.com/user-review/${email}`,{
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const MyReviews = () => {
     }))
 
     return (
-        <div className='mx-auto pb-5'>
+        <div data-aos="fade-left" className='mx-auto pb-5'>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>My Review(s)</p>
             </div>

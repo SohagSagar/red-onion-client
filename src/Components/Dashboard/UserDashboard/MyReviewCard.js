@@ -18,7 +18,7 @@ const MyReviewCard = ({ review, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/user-review/${_id}`, {
+                    fetch(`https://vast-wave-53666.herokuapp.com/user-review/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -50,7 +50,7 @@ const MyReviewCard = ({ review, refetch }) => {
     }
 
     return (
-        <div className=" lg:w-96 xs:w-80 bg-base-100 border-2 border-primary rounded-xl mt-20 mx-auto">
+        <div  className=" lg:w-96 xs:w-80 bg-base-100 border-2 border-primary rounded-xl mt-20 mx-auto">
             <div className="card-body pb-2  h-60">
                 <div className="avatar mx-auto mt-[-80px] z-100  ">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

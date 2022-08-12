@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { addToLocalStroage } from './Cart/CartInLocalStroage';
 
 
-const FoodDetails = ({ cartItems, setCardItems }) => {
+const FoodDetails = ({ cartItems, setCardItems,refreshCart,setRefreshCart}) => {
 
     const { id } = useParams();
     const [foodQuantity, setFoodQuantity] = useState(1);
@@ -23,6 +23,7 @@ const FoodDetails = ({ cartItems, setCardItems }) => {
             setCardItems(itemAddedToCart)
             addToLocalStroage(targetFood._id, foodQuantity);
             toast.success('Item added to cart');
+            setRefreshCart(!refreshCart)
         } else {
             toast.error('Item is Already Added In Cart !!');
         }
@@ -33,7 +34,7 @@ const FoodDetails = ({ cartItems, setCardItems }) => {
         // declare the async data fetching function
         const fetchData = async () => {
             // get the data from the api
-            const data = await fetch(`http://localhost:5000/food-details/${id}`);
+            const data = await fetch(`https://vast-wave-53666.herokuapp.com/food-details/${id}`);
             // convert the data to json
             const json = await data.json();
 
@@ -63,7 +64,10 @@ const FoodDetails = ({ cartItems, setCardItems }) => {
 
     return (
 
-        <div className='lg:px-12 food-details-container xs:pb-5'>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="100"
+        data-aos-offset="0" className='lg:px-12 food-details-container xs:pb-5'>
             <div className="left-container">
                 <h2 className=''>{name}</h2>
                 <p>{description}.</p>

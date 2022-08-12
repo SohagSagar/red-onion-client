@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CartItems from './CartItems';
 
-const CartModal = ({ cartItems,setCartModalStatus }) => {
+const CartModal = ({ cartItems,setCartModalStatus,refreshCart ,setRefreshCart }) => {
     return (
         <div>
             <input type="checkbox" id="cartModal" className="modal-toggle" />
@@ -16,6 +16,8 @@ const CartModal = ({ cartItems,setCartModalStatus }) => {
                         cartItems?.map(cartItem => <CartItems
                             key={cartItem?._id}
                             cartItem={cartItem}
+                            refreshCart={refreshCart} 
+                            setRefreshCart={setRefreshCart}
                         ></CartItems>)
                     }
                     <div className="modal-action flex justify-center ">

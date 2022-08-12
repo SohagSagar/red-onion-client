@@ -1,7 +1,7 @@
 import React from 'react';
 import { removeFromLocalStroage } from './CartInLocalStroage';
 
-const CartItems = ({ cartItem }) => {
+const CartItems = ({ cartItem,refreshCart, setRefreshCart }) => {
 
     if (!cartItem) {
         return;
@@ -10,6 +10,7 @@ const CartItems = ({ cartItem }) => {
 
     const handleRemoveCartItem = (_id) => {
         removeFromLocalStroage(_id);
+        setRefreshCart(!refreshCart)
     }
     return (
         <div className='flex justify-between items-center rounded-lg border px-1 my-2'>

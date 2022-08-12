@@ -53,10 +53,11 @@ const UpdatePassword = lazy(() => import("./Components/Dashboard/UserDashboard/U
 function App() {
   const [user] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
+  const [refreshCart,setRefreshCart]=useState(false)
   const [searchText, setSearchText] = useState('');
   const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
 
-  const { data } = useQuery(['super-admin', user], () => fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+  const { data} = useQuery(['super-admin', user], () => fetch(`https://vast-wave-53666.herokuapp.com/super-admin/${user?.email}`, {
     headers: {
       'content-type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -66,13 +67,10 @@ function App() {
     return res.json()
   }),{enabled:!!user})
 
-
-
-
   return (
     <div className="text-accent ">
 
-      <Navbar cartItems={cartItems} setCardItems={setCardItems} />
+      <Navbar cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart} />
 
       {/* //public routes */}
       <Suspense fallback={<Loading />}>
@@ -89,7 +87,7 @@ function App() {
             </>
           } />
 
-          <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} />}></Route>
+          <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart}/>}></Route>
 
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>

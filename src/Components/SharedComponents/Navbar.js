@@ -10,7 +10,7 @@ import CartModal from '../Cart/CartModal';
 import { getStoredCart } from '../Cart/CartInLocalStroage';
 
 
-const Navbar = ({ cartItems, setCardItems }) => {
+const Navbar = ({ cartItems, setCardItems,refreshCart, setRefreshCart }) => {
     const [user] = useAuthState(auth);
     const [cartModalStatus, setCartModalStatus] = useState(true)
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
         // declare the async data fetching function
         const fetchData = async () => {
             // get the data from the api
-            const data = await fetch(`http://localhost:5000/food-items`);
+            const data = await fetch(`https://vast-wave-53666.herokuapp.com/food-items`);
             // convert the data to json
             const json = await data.json();
 
@@ -51,8 +51,11 @@ const Navbar = ({ cartItems, setCardItems }) => {
                 }
             }
         }
+        
         setCardItems(savedCart);
-    }, [products]);
+
+    }, [products,refreshCart]);
+
 
 
 
@@ -110,7 +113,7 @@ const Navbar = ({ cartItems, setCardItems }) => {
                 </ul>
             </div>
             {
-                cartModalStatus && <CartModal cartItems={cartItems} setCartModalStatus={setCartModalStatus}></CartModal>
+                cartModalStatus && <CartModal cartItems={cartItems} setCartModalStatus={setCartModalStatus} refreshCart={refreshCart} setRefreshCart={setRefreshCart}></CartModal>
             }
 
         </div>
