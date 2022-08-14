@@ -8,7 +8,7 @@ const useAdmin = (user) => {
         const fetchData = async () => {
 
             // get the data from the api
-            const data = await fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+            const data = await fetch(`https://vast-wave-53666.herokuapp.com/super-admin/${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

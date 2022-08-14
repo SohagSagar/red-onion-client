@@ -35,7 +35,7 @@ const Checkout = ({ cartItems,setRefreshCart,refreshCart }) => {
         }
         
 
-        fetch('http://localhost:5000/order-foods', {
+        fetch('https://vast-wave-53666.herokuapp.com/order-foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

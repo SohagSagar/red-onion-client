@@ -19,7 +19,10 @@ const UpdatePassword = () => {
         }
     }
     return (
-        <div data-aos="fade-left" className="card lg:w-96 xs:w-80 bg-base-100 border mx-auto mt-10">
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="30"
+        data-aos-offset="0" className="card lg:w-96 xs:w-80 bg-base-100 border mx-auto mt-10">
             <div className="card-body">
                 <h2 className="text-xl font-semibold text-center ">Reset Password</h2>
                 <div className='p-2 bg-slate-200 rounded-xl'>

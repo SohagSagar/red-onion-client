@@ -10,7 +10,7 @@ const MyOrderDetails = () => {
     const navigate = useNavigate()
     const { id } = useParams();
     console.log(id);
-    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`http://localhost:5000/my-order-details/${id}`,{
+    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`https://vast-wave-53666.herokuapp.com/my-order-details/${id}`,{
         headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -43,7 +43,10 @@ const MyOrderDetails = () => {
 
     
     return (
-        <div data-aos="fade-left" className='min-h-screen lg:px-12'>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="30"
+        data-aos-offset="0" className='min-h-screen lg:px-12'>
             <div className='lg:w-[800px] mx-auto border rounded-lg mt-10'>
                 <p className="text-xl font-semibold text-center">Order Details</p><hr />
                 {

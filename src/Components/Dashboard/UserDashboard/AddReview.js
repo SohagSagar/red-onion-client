@@ -30,7 +30,7 @@ const AddReview = () => {
         
 
         setDataLoading(true)
-        fetch('http://localhost:5000/user-review', {
+        fetch('https://vast-wave-53666.herokuapp.com/user-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -58,7 +58,10 @@ const AddReview = () => {
 
     }
     return (
-        <div data-aos="fade-left" className="rounded-md lg:w-96 xs:w-80  mx-auto bg-base-100 shadow-md mt-2 ">
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="30"
+        data-aos-offset="0" className="rounded-md lg:w-96 xs:w-80  mx-auto bg-base-100 shadow-md mt-2 ">
             <div className="card-body">
                 <h2 className="text-xl font-semibold text-center ">Add Review</h2><hr />
 

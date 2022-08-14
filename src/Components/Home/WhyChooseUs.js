@@ -11,7 +11,7 @@ import '../../Styles/WhyChooseUs.css';
 
 const WhyChooseUs = () => {
     return (
-        <div className='lg:px-12 text-accent'>
+        <div className='lg:px-12 text-accent overflow-hidden'>
             <div className='flex justify-center items-center text-xl font-semibold'>
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
                 <div className='mx-2'>Why you choose us</div>

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import '../../Styles/LoginPage.css';
 import useToken from '../Hooks/useToken';
 
-
+/* eslint-disable */
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [
@@ -59,7 +59,7 @@ const Login = () => {
     return (
         <div data-aos="fade-zoom-in"
         data-aos-easing="ease-in"
-        data-aos-delay="100"
+        data-aos-delay="30"
         data-aos-offset="0"
          className=''>
             <div className='min-h-screen xs:min-h-12 xs:py-12 login-page  flex justify-center items-center '>

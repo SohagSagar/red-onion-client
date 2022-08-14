@@ -10,7 +10,7 @@ import { signOut } from 'firebase/auth';
 const UserReviews = () => {
     const navigate = useNavigate()
     const [status, setOrderStatus] = useState('all-review');
-    const { data: userReviews, isLoading, refetch } = useQuery(['user-reviews', status], () => fetch(`http://localhost:5000/user-reviews/${status}`, {
+    const { data: userReviews, isLoading, refetch } = useQuery(['user-reviews', status], () => fetch(`https://vast-wave-53666.herokuapp.com/user-reviews/${status}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -27,7 +27,7 @@ const UserReviews = () => {
 
     const handleChangeStatus = async (id, status) => {
 
-        await fetch(`http://localhost:5000/review-status/${id}`, {
+        await fetch(`https://vast-wave-53666.herokuapp.com/review-status/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -58,7 +58,10 @@ const UserReviews = () => {
 
     
     return (
-        <div data-aos="fade-left" className='mx-auto'>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="30"
+        data-aos-offset="0" className='mx-auto'>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>Order History</p>
             </div>

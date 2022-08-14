@@ -11,7 +11,7 @@ import { signOut } from 'firebase/auth';
 const AllOrders = () => {
     const navigate = useNavigate()
     const [orderStatus,setOrderStatus]=useState('all-orders');
-    const { data: allOrders, isLoading, refetch } = useQuery(['all-orders',orderStatus], () => fetch(`http://localhost:5000/all-orders/${orderStatus}`, {
+    const { data: allOrders, isLoading, refetch } = useQuery(['all-orders',orderStatus], () => fetch(`https://vast-wave-53666.herokuapp.com/all-orders/${orderStatus}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const AllOrders = () => {
 
     const handleChangeStatus = async (id, orderStatus) => {
 
-        await fetch(`http://localhost:5000/change-status/${id}`, {
+        await fetch(`https://vast-wave-53666.herokuapp.com/change-status/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -68,7 +68,7 @@ const AllOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/all-orders/${id}`, {
+                    fetch(`https://vast-wave-53666.herokuapp.com/all-orders/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -105,7 +105,10 @@ const AllOrders = () => {
 
 
     return (
-        <div data-aos="fade-left" className='mx-auto'>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-delay="30"
+        data-aos-offset="0" className='mx-auto'>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>Order History</p>
             </div>

@@ -4,10 +4,11 @@ import logo from '../../resources/logo.png';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase';
 import toast from 'react-hot-toast';
-import Loading from '../SharedComponents/Loading';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import '../../Styles/LoginPage.css'
+/* eslint-disable */
+
 
 const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -31,8 +32,8 @@ const Signup = () => {
 
 
     if (error || updateProfileError) {
-        console.log(error.message);
-        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+        console.log(error?.message);
+        if (error?.message === "Firebase: Error (auth/email-already-in-use).") {
             toast.error('This email is already registered')
         }
         else {
@@ -48,10 +49,6 @@ const Signup = () => {
         }
 
     }, [user,navigate])
-
-    if (loading || updating) {
-        return <Loading />;
-    }
 
 
     return (

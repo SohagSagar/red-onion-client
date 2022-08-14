@@ -34,7 +34,7 @@ const FoodDetails = ({ cartItems, setCardItems,refreshCart,setRefreshCart}) => {
         // declare the async data fetching function
         const fetchData = async () => {
             // get the data from the api
-            const data = await fetch(`http://localhost:5000/food-details/${id}`);
+            const data = await fetch(`https://vast-wave-53666.herokuapp.com/food-details/${id}`);
             // convert the data to json
             const json = await data.json();
 
@@ -66,7 +66,7 @@ const FoodDetails = ({ cartItems, setCardItems,refreshCart,setRefreshCart}) => {
 
         <div data-aos="fade-zoom-in"
         data-aos-easing="ease-in"
-        data-aos-delay="100"
+        data-aos-delay="30"
         data-aos-offset="0" className='lg:px-12 food-details-container xs:pb-5'>
             <div className="left-container">
                 <h2 className=''>{name}</h2>

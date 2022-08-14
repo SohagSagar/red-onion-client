@@ -4,7 +4,7 @@ const TestimonialCard = ({ review }) => {
     const { name, profession, imageURL, rating, review: userReview } = review
     const dummyImage='https://i.ibb.co/64Jfd5g/dummy-user.png'
     return (
-        <div className=" lg:w-[500px] xs:max-w-xs h-52 bg-base-100 border-2 border-primary  rounded-xl mt-20 mx-auto">
+        <div className=" lg:min-w-[500px] xs:max-w-xs h-52 bg-base-100 border-2 border-primary  rounded-xl mt-20 mx-auto">
             <div className="card-body">
                 <div className="avatar mx-auto mt-[-80px] z-100  ">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -13,9 +13,9 @@ const TestimonialCard = ({ review }) => {
                 </div>
                 <div className='mx-auto'>
                     <p className='text-center font-semibold'>{name}</p>
-                    <p className='text-gray-500 text-center text-sm leading-none'>An {profession}</p>
+                    <p className='text-gray-500 text-center text-[12px] leading-none'>({profession})</p>
                 </div>
-                <p className='break-all text-gray-600'>{userReview}</p>
+                <p className='break-all text-gray-600 text-sm'>{userReview}</p>
 
                 <div className="rating rating-sm mx-auto gap-2">
 

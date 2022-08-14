@@ -41,5 +41,6 @@ module.exports = {
       "cupcake",
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui",'tailwind-scrollbar')]
+   
 }

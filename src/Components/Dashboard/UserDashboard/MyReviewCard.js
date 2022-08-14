@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyReviewCard = ({ review, refetch }) => {
     const { _id, name, profession, imageURL, rating, postOn, review: userReview } = review;
+    const dummyImage='https://i.ibb.co/64Jfd5g/dummy-user.png'
     const navigate = useNavigate()
     const handleDeleteReview = (_id) => {
         swal({
@@ -18,7 +19,7 @@ const MyReviewCard = ({ review, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/user-review/${_id}`, {
+                    fetch(`https://vast-wave-53666.herokuapp.com/user-review/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -46,7 +47,6 @@ const MyReviewCard = ({ review, refetch }) => {
                 }
             })
 
-
     }
 
     return (
@@ -54,12 +54,12 @@ const MyReviewCard = ({ review, refetch }) => {
             <div className="card-body pb-2  h-60">
                 <div className="avatar mx-auto mt-[-80px] z-100  ">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={imageURL} alt={'reviewer_image'} />
+                        <img src={imageURL ? imageURL : dummyImage } alt={'reviewer_image'} />
                     </div>
                 </div>
                 <div className='mx-auto'>
                     <p className='text-center font-semibold'>{name}</p>
-                    <p className='text-gray-500 text-center text-xs text-sm leading-none'>({profession})</p>
+                    <p className='text-gray-500 text-center text-sm leading-none'>({profession})</p>
                 </div>
                 <p className='break-all text-gray-600'>{userReview}</p>
 

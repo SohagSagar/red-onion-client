@@ -26,13 +26,13 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/user-reviews')
+        fetch('https://vast-wave-53666.herokuapp.com/user-reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);
 
     return (
-        <div className='lg:px-12 text-accent pb-10'>
+        <div className='lg:px-12 text-accent pb-10 '>
             <div className='flex justify-center items-center text-xl font-semibold'>
                 <div className='text-5xl text-primary'><AiOutlineSmallDash /></div>
                 <div className='mx-2'>Testimonials</div>

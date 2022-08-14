@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,6 +8,8 @@ import RequireAuth from "./Components/SharedComponents/RequireAuth";
 import Page404 from "./Components/SharedComponents/Page404";
 import Loading from "./Components/SharedComponents/Loading";
 import useAdmin from "./Components/Hooks/useAdmin";
+
+
 
 
 // home page components
@@ -58,11 +60,12 @@ function App() {
 
   const isAdmin = useAdmin(user);
 
-  // http://localhost:5000/
-  // http://localhost:5000
+  // https://vast-wave-53666.herokuapp.com/
+  // https://vast-wave-53666.herokuapp.com/
 
   return (
-    <div className="text-accent ">
+    <div className="text-accent overflow-hidden scrollbar-thin">
+
       <Suspense fallback={<Loading />}>
         <Navbar cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart} />
       </Suspense>
@@ -73,12 +76,12 @@ function App() {
 
           <Route path={"/"} element={
             <>
-
-              <Home setSearchText={setSearchText} />
-              <FoodSection searchText={searchText} />
-              <WhyChooseUs />
-              <Testimonials />
-
+              
+                <Home setSearchText={setSearchText} />
+                <FoodSection searchText={searchText} />
+                <WhyChooseUs />
+                <Testimonials />
+              
             </>
           } />
 
