@@ -1,5 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -47,6 +48,7 @@ const MyOrderDetails = () => {
         data-aos-easing="ease-in"
         data-aos-delay="30"
         data-aos-offset="0" className='min-h-screen lg:px-12'>
+            <Helmet><title>Order Details - Red Onion</title></Helmet>
             <div className='lg:w-[800px] mx-auto border rounded-lg mt-10'>
                 <p className="text-xl font-semibold text-center">Order Details</p><hr />
                 {

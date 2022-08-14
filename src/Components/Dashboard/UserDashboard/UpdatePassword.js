@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/Firebase';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const UpdatePassword = () => {
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
@@ -23,6 +24,7 @@ const UpdatePassword = () => {
         data-aos-easing="ease-in"
         data-aos-delay="30"
         data-aos-offset="0" className="card lg:w-96 xs:w-80 bg-base-100 border mx-auto mt-10">
+          <Helmet><title>Update Password - Red Onion</title></Helmet>
             <div className="card-body">
                 <h2 className="text-xl font-semibold text-center ">Reset Password</h2>
                 <div className='p-2 bg-slate-200 rounded-xl'>

@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import {  useNavigate } from 'react-router-dom';
@@ -33,6 +34,7 @@ const MyReviews = () => {
         data-aos-easing="ease-in"
         data-aos-delay="30"
         data-aos-offset="0" className='mx-auto pb-5'>
+            <Helmet><title>My Review - Red Onion</title></Helmet>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>My Review(s)</p>
             </div>

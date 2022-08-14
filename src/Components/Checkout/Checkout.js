@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/Firebase';
@@ -59,6 +60,7 @@ const Checkout = ({ cartItems,setRefreshCart,refreshCart }) => {
     }
     return (
         <div className='min-h-screen lg:px-12'>
+            <Helmet><title>Checkout - Red Onion</title></Helmet>
             <div className='lg:w-[800px] mx-auto border rounded-lg mt-10'>
                 <p className="text-xl font-semibold text-center">Orders Review</p><hr />
                 {

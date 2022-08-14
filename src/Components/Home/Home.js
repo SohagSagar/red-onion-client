@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import '../../Styles/Home.css'
 
 
@@ -6,6 +7,7 @@ import '../../Styles/Home.css'
 const Home = ({setSearchText}) => {
     return (
         <div>
+            <Helmet><title> Red Onion</title></Helmet>
             <div className="hero xs:pt-10 xs:h-80 lg:min-h-screen homeBanner ">
                 <div className="hero-content text-center">
                     <div className="max-w-md mt-[-100px]">

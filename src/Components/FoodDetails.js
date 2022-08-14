@@ -5,6 +5,7 @@ import { BsCart } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { addToLocalStroage } from './Cart/CartInLocalStroage';
+import { Helmet } from 'react-helmet-async';
 
 
 const FoodDetails = ({ cartItems, setCardItems,refreshCart,setRefreshCart}) => {
@@ -68,6 +69,7 @@ const FoodDetails = ({ cartItems, setCardItems,refreshCart,setRefreshCart}) => {
         data-aos-easing="ease-in"
         data-aos-delay="30"
         data-aos-offset="0" className='lg:px-12 food-details-container xs:pb-5'>
+            <Helmet><title>Food Details - Red Onion</title></Helmet>
             <div className="left-container">
                 <h2 className=''>{name}</h2>
                 <p>{description}.</p>

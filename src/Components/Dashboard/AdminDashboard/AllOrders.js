@@ -7,6 +7,7 @@ import auth from '../../../Firebase/Firebase';
 import Loading from '../../SharedComponents/Loading';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 const AllOrders = () => {
     const navigate = useNavigate()
@@ -109,6 +110,7 @@ const AllOrders = () => {
         data-aos-easing="ease-in"
         data-aos-delay="30"
         data-aos-offset="0" className='mx-auto'>
+            <Helmet><title>All Orders - Red Onion</title></Helmet>
             <div className='text-center font-bold text-xl my-5'>
                 <p className='text-sm'>Order History</p>
             </div>
