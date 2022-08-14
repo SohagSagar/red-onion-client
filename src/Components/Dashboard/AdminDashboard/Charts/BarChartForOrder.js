@@ -17,7 +17,7 @@ const BarChartForOrder = ({ orderCount }) => {
 
 
     return (
-        <div  style={{paddingBottom:40, width:450, height: 300}} className='border-2 rounded-2xl p-5 chart-container '>
+        <div style={{paddingBottom:40, width:450, height: 300}} className='border-2 rounded-2xl p-5 chart-container '>
             <p className='chart-heading text-center mb-5 font-bold text-gray-500'>Order History</p>
             <ResponsiveContainer>
             <BarChart className='mr-5'  width={450} height={250} data={data}>

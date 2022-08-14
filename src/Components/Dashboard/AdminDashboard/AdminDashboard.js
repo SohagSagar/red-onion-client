@@ -12,7 +12,7 @@ const AdminDashboard = () => {
     }
     
     return (
-        <div data-aos="fade-left" className='grid lg:grid-cols-2 sm:grid-cols-1 justify-items-center items-center gap-5 mt-5'>
+        <div className='grid lg:grid-cols-2 sm:grid-cols-1 justify-items-center items-center gap-5 mt-5'>
             <BarChartForOrder orderCount={orderCount}/>
             <PieChartForOrder orderCount={orderCount}/>
 

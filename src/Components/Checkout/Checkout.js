@@ -6,7 +6,7 @@ import auth from '../../Firebase/Firebase';
 import { deleteShoppingCart } from '../Cart/CartInLocalStroage';
 import Loading from '../SharedComponents/Loading';
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems,setRefreshCart,refreshCart }) => {
     const navigate = useNavigate()
     const [user, loading] = useAuthState(auth);
     if (loading) {
@@ -33,9 +33,9 @@ const Checkout = ({ cartItems }) => {
 
 
         }
-        console.log('object');
+        
 
-        fetch('https://vast-wave-53666.herokuapp.com/order-foods', {
+        fetch('http://localhost:5000/order-foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -46,7 +46,7 @@ const Checkout = ({ cartItems }) => {
             .then(data => {
                 if (data.insertedId) {
                     toast.success('Order place successfully')
-                    deleteShoppingCart();
+                    deleteShoppingCart(setRefreshCart,refreshCart);
                     navigate('/dashboard/my-orders');
 
                 }

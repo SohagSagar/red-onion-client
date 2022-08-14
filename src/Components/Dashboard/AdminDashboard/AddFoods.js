@@ -41,7 +41,7 @@ const AddFoods = () => {
             imageURL: imageURL
         }
         setDataLoading(true)
-        fetch('https://vast-wave-53666.herokuapp.com/add-food', {
+        fetch('http://localhost:5000/add-food', {
             method: 'POST',
             headers: {
                 'content-type': "application/json",

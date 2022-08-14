@@ -35,8 +35,9 @@ const removeFromLocalStroage = id => {
     }
 }
 
-const deleteShoppingCart = () => {
+const deleteShoppingCart = (setRefreshCart,refreshCart) => {
     localStorage.removeItem('shopping-cart');
+    setRefreshCart(!refreshCart)
 }
 
 export {

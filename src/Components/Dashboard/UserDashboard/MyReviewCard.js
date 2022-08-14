@@ -18,7 +18,7 @@ const MyReviewCard = ({ review, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/user-review/${_id}`, {
+                    fetch(`http://localhost:5000/user-review/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

@@ -1,13 +1,13 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./Firebase/Firebase";
 import { useState } from "react";
 import RequireAuth from "./Components/SharedComponents/RequireAuth";
-import { useQuery } from "react-query";
 import Page404 from "./Components/SharedComponents/Page404";
 import Loading from "./Components/SharedComponents/Loading";
+import useAdmin from "./Components/Hooks/useAdmin";
 
 
 // home page components
@@ -53,24 +53,53 @@ const UpdatePassword = lazy(() => import("./Components/Dashboard/UserDashboard/U
 function App() {
   const [user] = useAuthState(auth);
   const [cartItems, setCardItems] = useState([]);
-  const [refreshCart,setRefreshCart]=useState(false)
+  const [refreshCart, setRefreshCart] = useState(false)
   const [searchText, setSearchText] = useState('');
-  const [verifySuperAdmin, setVerifySuperAdmin] = useState(false)
 
-  const { data} = useQuery(['super-admin', user], () => fetch(`https://vast-wave-53666.herokuapp.com/super-admin/${user?.email}`, {
-    headers: {
-      'content-type': 'application/json',
-      'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  }).then(res => {
-    res.status === 200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false)
-    return res.json()
-  }),{enabled:!!user})
+  const isAdmin = useAdmin(user);
+  console.log('admin from app',isAdmin);
+
+  // useEffect(() => {
+  //   // declare the async data fetching function
+  //   setLoading(true)
+  //   const fetchData = async () => {
+  //     console.log('1');
+  //     // get the data from the api
+  //     const data = await fetch(`http://localhost:5000/super-admin/${user?.email}`, {
+  //       headers: {
+  //         'content-type': 'application/json',
+  //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+  //       }
+  //     });
+  //     // convert the data to json
+  //     const json = await data.json();
+  //     console.log('2');
+
+  //     // set state with the result
+
+  //     await json.status === 200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false);
+  //     console.log('3');
+  //     setLoading(false)
+  //   }
+  //   // call the function
+  //   fetchData()
+  //     // make sure to catch any error
+  //     .catch(console.error);
+  // }, [user])
+
+
+
+
+
+  // http://localhost:5000/
+  // http://localhost:5000/
+
 
   return (
     <div className="text-accent ">
-
-      <Navbar cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart} />
+      <Suspense fallback={<Loading />}>
+        <Navbar cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart} />
+      </Suspense>
 
       {/* //public routes */}
       <Suspense fallback={<Loading />}>
@@ -78,24 +107,24 @@ function App() {
 
           <Route path={"/"} element={
             <>
-              {/* <Suspense fallback={<Loading />}> */}
+
               <Home setSearchText={setSearchText} />
               <FoodSection searchText={searchText} />
               <WhyChooseUs />
               <Testimonials />
-              {/* </Suspense> */}
+
             </>
           } />
 
-          <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart}/>}></Route>
+          <Route path="/food-details/:id" element={<FoodDetails cartItems={cartItems} setCardItems={setCardItems} refreshCart={refreshCart} setRefreshCart={setRefreshCart} />}></Route>
 
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
 
           {/* //Protected routes */}
-          <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} /></RequireAuth>}></Route>
+          <Route path="/checkout" element={<RequireAuth><Checkout cartItems={cartItems} setRefreshCart={setRefreshCart} refreshCart={refreshCart} /></RequireAuth>}></Route>
           {
-            verifySuperAdmin ?
+            isAdmin ?
 
               <Route path="/dashboard" element={<RequireAuth><AdminSidebarMenu /></RequireAuth>} >
                 <Route index element={<AdminDashboard />} />

@@ -10,7 +10,7 @@ const MyOrderDetails = () => {
     const navigate = useNavigate()
     const { id } = useParams();
     console.log(id);
-    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`https://vast-wave-53666.herokuapp.com/my-order-details/${id}`,{
+    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`http://localhost:5000/my-order-details/${id}`,{
         headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`
         }

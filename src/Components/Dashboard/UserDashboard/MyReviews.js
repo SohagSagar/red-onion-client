@@ -12,7 +12,7 @@ const MyReviews = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const email = user?.email;
-    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`https://vast-wave-53666.herokuapp.com/user-review/${email}`,{
+    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`http://localhost:5000/user-review/${email}`,{
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

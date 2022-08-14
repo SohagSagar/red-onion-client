@@ -9,7 +9,7 @@ import { signOut } from 'firebase/auth';
 
 const GetAllUser = () => {
     const navigate = useNavigate()
-    const { data: allUsers, isLoading, refetch } = useQuery(['all-users'], () => fetch(`https://vast-wave-53666.herokuapp.com/all-user`, {
+    const { data: allUsers, isLoading, refetch } = useQuery(['all-users'], () => fetch(`http://localhost:5000/all-user`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const GetAllUser = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/user/${id}`, {
+                    fetch(`http://localhost:5000/user/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
