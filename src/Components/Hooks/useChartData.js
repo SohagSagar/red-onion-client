@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import Loading from "../SharedComponents/Loading";
 
 const useChartData = () => {
     const [chartData,setChartData]=useState({})

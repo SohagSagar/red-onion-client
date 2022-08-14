@@ -56,7 +56,7 @@ const routes = [
 ];
 
 const AdminSidebarMenu = () => {
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const dummyImage='https://i.ibb.co/64Jfd5g/dummy-user.png'
     return (
         <div>
