@@ -1,70 +1,86 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```sh
 
-## Available Scripts
+                         ✨HELLO, WELCOME TO MY PROJECT✨
+  
+```
+##### Project Introductions
+-------------------------------------
+>> Name: Red Onion Restaurant
+>> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
+>> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
+>> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
 
-In the project directory, you can run:
 
-### `npm start`
+```sh
+Credentials: (Admin)
+EmaiL: sohagsagar29@gmail.com
+Password: 123456
+-----------------------------------------
+Credentials: (Dummy User)
+Email: sohag@gmail.com
+Password:123456
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##### Project Stacks
+--------------------------------------
+###### Frontend:
+- React js 
+- Javascript
+- Tailwind Css
+- Daisy UI
+- Firebase (For authentication)
+- AOS animation
+- Swiper js
+- Hot Toster for fire notifications
+- RAW CSS
+- HTML
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+###### Backend:
+- Node js
+- Express js
+- Mongodb
+- Json Web Token
 
-### `npm test`
+##### Project Features
+-------------------------------------
+###### User interface: 
+- login/singn up feature for regular users
+- store the cart information into the local stroage for farther uses
+- protected checkout route based on user authentication
+- every user has their own dashboard for getting all the necessary information
+- user has the option for updating their profile
+- user can cancel their ordered product until it is in the shift stage.
+~---------------------------------------------------------------------------------~
+###### Admin interface:
+- Has scpecial credential to log into the application
+- admin pannel has a dashboard to view the overall application satistics
+- can change the order status processing->shipped->delivered->canceled according to the demand
+- can active or inaction user, as well as the users review
+- get all notification comming from the user end
+- can update/ add food items into the food section according to the category
+- have options for update admin profile
+~---------------------------------------------------------------------------------~
+###### Backend  Features:
+- after successful login, each user get an access token to get the authorization access.
+- if the token is expire or modified, then user have to login again to enter the application.
+- every routes are verified by json web token to prevent unauthorize access
+- add second layer of verification form accessing admin routes
+##### Project Descriptions
+*************************************
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### Short Review: 
+This is a simple online restaurant project where a customer can visit the website and get large collection of food items in different categories. Once a visitor click on any of the food item, he can view all the necessary information of that food and also get an option to set the food into the cart section for father use . 
 
-### `npm run build`
+After that, the visitor can checkout the cart items but he must me login to the application before the comfirm the order. New user can signup for registering themself into the system. After comfirm the order, user can get their order history into their dashbord section. In the dashbord, user get some extra options like, he can write his opinion about the food or service quality, can update their password and many more.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+There are another section for admin who have all the control over the application. Once login with special email-password an admin get access to the admin panel section,  where an admin can get the overall statistic of the activities of the application. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In the admin dashboard, an admin can view all the order history and have a filter option according to the cuurent status of the order. In the order section, he can change the order status from processing->shipped->delivered->canceled. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Admin can view all the users,their review also get the users complain (if any complain is registerd). Once any user register any review, admin get that notification and have the control to show or reject  that review in the testimonial section.
 
-### `npm run eject`
+Admin can add different food items under different categories and also can view the existing foods items. There are some other option like update password, view or update profile and in in a nutshell admin gets all the control over the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+                                        ✨THANK YOU✨
