@@ -57,43 +57,9 @@ function App() {
   const [searchText, setSearchText] = useState('');
 
   const isAdmin = useAdmin(user);
-  console.log('admin from app',isAdmin);
-
-  // useEffect(() => {
-  //   // declare the async data fetching function
-  //   setLoading(true)
-  //   const fetchData = async () => {
-  //     console.log('1');
-  //     // get the data from the api
-  //     const data = await fetch(`http://localhost:5000/super-admin/${user?.email}`, {
-  //       headers: {
-  //         'content-type': 'application/json',
-  //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-  //       }
-  //     });
-  //     // convert the data to json
-  //     const json = await data.json();
-  //     console.log('2');
-
-  //     // set state with the result
-
-  //     await json.status === 200 ? setVerifySuperAdmin(true) : setVerifySuperAdmin(false);
-  //     console.log('3');
-  //     setLoading(false)
-  //   }
-  //   // call the function
-  //   fetchData()
-  //     // make sure to catch any error
-  //     .catch(console.error);
-  // }, [user])
-
-
-
-
 
   // http://localhost:5000/
-  // http://localhost:5000/
-
+  // http://localhost:5000
 
   return (
     <div className="text-accent ">
