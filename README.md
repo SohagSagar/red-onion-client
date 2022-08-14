@@ -6,10 +6,10 @@
 ```
 ##### Project Introductions
 -------------------------------------
--> Name: Red Onion Restaurant
--> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
--> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
--> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
+- Name: Red Onion Restaurant
+- Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
+- Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
+- Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
 
 
 ```sh
@@ -51,6 +51,7 @@ Password:123456
 - every user has their own dashboard for getting all the necessary information
 - user has the option for updating their profile
 - user can cancel their ordered product until it is in the shift stage.
+
 ~------------------------------------------------------------------~
 ###### Admin interface:
 - Has scpecial credential to log into the application
