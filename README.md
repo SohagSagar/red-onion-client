@@ -1,15 +1,15 @@
 
 ```sh
 
-                         ✨HELLO, WELCOME TO MY PROJECT✨
+                                    ✨HELLO, WELCOME TO MY PROJECT✨
   
 ```
 ##### Project Introductions
 -------------------------------------
->> Name: Red Onion Restaurant
->> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
->> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
->> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
+> Name: Red Onion Restaurant
+> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
+> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
+> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
 
 
 ```sh
@@ -51,7 +51,7 @@ Password:123456
 - every user has their own dashboard for getting all the necessary information
 - user has the option for updating their profile
 - user can cancel their ordered product until it is in the shift stage.
-~---------------------------------------------------------------------------------~
+~------------------------------------------------------------------~
 ###### Admin interface:
 - Has scpecial credential to log into the application
 - admin pannel has a dashboard to view the overall application satistics
@@ -60,7 +60,7 @@ Password:123456
 - get all notification comming from the user end
 - can update/ add food items into the food section according to the category
 - have options for update admin profile
-~---------------------------------------------------------------------------------~
+~------------------------------------------------------------------~
 ###### Backend  Features:
 - after successful login, each user get an access token to get the authorization access.
 - if the token is expire or modified, then user have to login again to enter the application.
@@ -83,4 +83,4 @@ Admin can view all the users,their review also get the users complain (if any co
 Admin can add different food items under different categories and also can view the existing foods items. There are some other option like update password, view or update profile and in in a nutshell admin gets all the control over the application.
 
 
-                                        ✨THANK YOU✨
+                                                      ✨THANK YOU✨
