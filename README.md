@@ -85,4 +85,4 @@ Admin can view all the users,their review also get the users complain (if any co
 Admin can add different food items under different categories and also can view the existing foods items. There are some other option like update password, view or update profile and in in a nutshell admin gets all the control over the application.
 
 
-                                                      ✨THANK YOU✨
+                                           ✨THANK YOU✨
