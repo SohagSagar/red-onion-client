@@ -6,10 +6,10 @@
 ```
 ##### Project Introductions
 -------------------------------------
-> Name: Red Onion Restaurant
-> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
-> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
-> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
+-> Name: Red Onion Restaurant
+-> Live Website : [Red Onion Restaurant](https://red-onion-4b109.web.app/)
+-> Client Code : [Get Client Site Repository](https://github.com/SohagSagar/red-onion-client)
+-> Server Code : [Get Server Site Repository](https://github.com/SohagSagar/red_onion_server)
 
 
 ```sh
@@ -60,6 +60,7 @@ Password:123456
 - get all notification comming from the user end
 - can update/ add food items into the food section according to the category
 - have options for update admin profile
+
 ~------------------------------------------------------------------~
 ###### Backend  Features:
 - after successful login, each user get an access token to get the authorization access.
