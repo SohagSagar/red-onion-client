@@ -11,7 +11,7 @@ const MyOrderDetails = () => {
     const navigate = useNavigate()
     const { id } = useParams();
     console.log(id);
-    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`https://vast-wave-53666.herokuapp.com/my-order-details/${id}`,{
+    const { data: orderItems, isLoading,error } = useQuery(['item-details',id], () => fetch(`https://red-onion-server.up.railway.app/my-order-details/${id}`,{
         headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`
         }

@@ -26,7 +26,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('https://vast-wave-53666.herokuapp.com/user-reviews')
+        fetch('https://red-onion-server.up.railway.app/user-reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);

@@ -16,7 +16,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const email = user?.email;
     const [orderStatus,setOrderStatus]=useState('all-orders');
-    const { data: products, isLoading, refetch } = useQuery(['products', user,orderStatus], () => fetch(`https://vast-wave-53666.herokuapp.com/my-order/${email}?status=${orderStatus}`, {
+    const { data: products, isLoading, refetch } = useQuery(['products', user,orderStatus], () => fetch(`https://red-onion-server.up.railway.app/my-order/${email}?status=${orderStatus}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const MyOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/my-order/${id}`, {
+                    fetch(`https://red-onion-server.up.railway.app/my-order/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json'

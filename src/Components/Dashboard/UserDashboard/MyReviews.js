@@ -13,7 +13,7 @@ const MyReviews = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const email = user?.email;
-    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`https://vast-wave-53666.herokuapp.com/user-review/${email}`,{
+    const { data: reviews, isLoading, refetch } = useQuery(['user-review', user], () => fetch(`https://red-onion-server.up.railway.app/user-review/${email}`,{
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

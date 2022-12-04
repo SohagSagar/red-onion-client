@@ -19,7 +19,7 @@ const MyReviewCard = ({ review, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/user-review/${_id}`, {
+                    fetch(`https://red-onion-server.up.railway.app/user-review/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

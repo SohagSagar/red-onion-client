@@ -36,7 +36,7 @@ const Checkout = ({ cartItems,setRefreshCart,refreshCart }) => {
         }
         
 
-        fetch('https://vast-wave-53666.herokuapp.com/order-foods', {
+        fetch('https://red-onion-server.up.railway.app/order-foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

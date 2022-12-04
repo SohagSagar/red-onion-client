@@ -42,7 +42,7 @@ const AddFoods = () => {
             imageURL: imageURL
         }
         setDataLoading(true)
-        fetch('https://vast-wave-53666.herokuapp.com/add-food', {
+        fetch('https://red-onion-server.up.railway.app/add-food', {
             method: 'POST',
             headers: {
                 'content-type': "application/json",

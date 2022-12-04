@@ -9,7 +9,7 @@ const FoodSection = ({searchText}) => {
     const [category, setCategory] = useState('Breakfast');
     const [activeBtn, setActiveBtn] = useState('breakfast');
 
-    const { data: foods, isLoading } = useQuery(['food-items', category], () => fetch(`https://vast-wave-53666.herokuapp.com/food-items/${category}`).then(res => res.json()))
+    const { data: foods, isLoading } = useQuery(['food-items', category], () => fetch(`https://red-onion-server.up.railway.app/food-items/${category}`).then(res => res.json()))
 
 
     const breakfastBtn = () => {

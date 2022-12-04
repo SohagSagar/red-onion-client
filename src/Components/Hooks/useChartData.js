@@ -10,7 +10,7 @@ const useChartData = () => {
         // declare the async data fetching function
         const fetchData = async () => {
             // get the data from the api
-            const data = await fetch(`https://vast-wave-53666.herokuapp.com/order-count`);
+            const data = await fetch(`https://red-onion-server.up.railway.app/order-count`);
             // convert the data to json
             const json = await data.json();
 

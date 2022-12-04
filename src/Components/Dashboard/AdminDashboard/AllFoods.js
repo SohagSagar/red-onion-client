@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet-async';
 const AllFoods = () => {
     const navigate = useNavigate()
     const [category,setCategory]=useState('all-foods');
-    const { data: foods, isLoading, refetch } = useQuery(['all-foods',category], () => fetch(`https://vast-wave-53666.herokuapp.com/all-foods/${category}`, {
+    const { data: foods, isLoading, refetch } = useQuery(['all-foods',category], () => fetch(`https://red-onion-server.up.railway.app/all-foods/${category}`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -38,7 +38,7 @@ const AllFoods = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/food-items/${id}`, {
+                    fetch(`https://red-onion-server.up.railway.app/food-items/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

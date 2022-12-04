@@ -60,8 +60,8 @@ function App() {
 
   const isAdmin = useAdmin(user);
 
-  // https://vast-wave-53666.herokuapp.com/
-  // https://vast-wave-53666.herokuapp.com/
+  // https://red-onion-server.up.railway.app/
+  // https://red-onion-server.up.railway.app/
 
   return (
     <div className="text-accent overflow-hidden scrollbar-thin">

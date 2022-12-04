@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet-async';
 
 const GetAllUser = () => {
     const navigate = useNavigate()
-    const { data: allUsers, isLoading, refetch } = useQuery(['all-users'], () => fetch(`https://vast-wave-53666.herokuapp.com/all-user`, {
+    const { data: allUsers, isLoading, refetch } = useQuery(['all-users'], () => fetch(`https://red-onion-server.up.railway.app/all-user`, {
         headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -37,7 +37,7 @@ const GetAllUser = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`https://vast-wave-53666.herokuapp.com/user/${id}`, {
+                    fetch(`https://red-onion-server.up.railway.app/user/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

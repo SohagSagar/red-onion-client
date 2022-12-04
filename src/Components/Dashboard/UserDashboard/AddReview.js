@@ -31,7 +31,7 @@ const AddReview = () => {
         
 
         setDataLoading(true)
-        fetch('https://vast-wave-53666.herokuapp.com/user-review', {
+        fetch('https://red-onion-server.up.railway.app/user-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
